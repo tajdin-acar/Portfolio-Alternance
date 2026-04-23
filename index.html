@@ -1,0 +1,1571 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tajdin Acar — Finance & Performance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F5F3EF;
+    --bg2: #EDEAE4;
+    --surface: #FFFFFF;
+    --surface2: #F9F8F5;
+    --border: #D8D3C8;
+    --text: #1A1714;
+    --text2: #4A4540;
+    --text3: #7A736A;
+    --accent: #1C3A5E;
+    --accent2: #2A5490;
+    --gold: #B8935A;
+    --gold2: #D4AA70;
+    --card-shadow: 0 2px 20px rgba(28,58,94,0.07);
+    --card-shadow-hover: 0 8px 40px rgba(28,58,94,0.14);
+    --radius: 4px;
+    --radius-lg: 8px;
+    --transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+  }
+  [data-theme="dark"] {
+    --bg: #0F1117;
+    --bg2: #161B25;
+    --surface: #1A2135;
+    --surface2: #1E2840;
+    --border: #2A3550;
+    --text: #EAE6DF;
+    --text2: #B8B0A4;
+    --text3: #7A7570;
+    --accent: #4A8FCB;
+    --accent2: #6AAEE0;
+    --gold: #C9A870;
+    --gold2: #E0C090;
+    --card-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    --card-shadow-hover: 0 8px 40px rgba(0,0,0,0.5);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    transition: background 0.4s, color 0.4s;
+    overflow-x: hidden;
+  }
+
+  /* ─── SCROLLBAR ─── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+  /* ─── TYPOGRAPHY ─── */
+  h1,h2,h3,h4 { font-family: 'Cormorant Garamond', serif; }
+  h1 { font-size: clamp(2.8rem,6vw,5rem); font-weight: 600; line-height: 1.05; letter-spacing: -0.02em; }
+  h2 { font-size: clamp(1.8rem,3.5vw,2.8rem); font-weight: 500; line-height: 1.2; }
+  h3 { font-size: 1.3rem; font-weight: 600; }
+  h4 { font-size: 1.1rem; font-weight: 500; }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: var(--transition);
+    opacity: 0;
+    transform: translateY(-100%);
+    animation: navIn 0.6s 0.3s forwards;
+  }
+  @keyframes navIn { to { opacity:1; transform:translateY(0); } }
+  .nav-inner {
+    max-width: 1200px; margin: 0 auto;
+    padding: 0 2rem;
+    height: 64px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+  .nav-links {
+    display: flex; gap: 2.5rem; list-style: none;
+    align-items: center;
+  }
+  .nav-links a {
+    font-size: 0.8rem; font-weight: 500;
+    text-decoration: none; color: var(--text2);
+    letter-spacing: 0.08em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-actions { display:flex; gap:0.75rem; align-items:center; }
+
+  /* ─── BUTTONS ─── */
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.6rem 1.4rem;
+    border: 1.5px solid var(--accent);
+    background: transparent; color: var(--accent);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem; font-weight: 500;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    text-decoration: none; cursor: pointer;
+    border-radius: var(--radius);
+    transition: var(--transition);
+  }
+  .btn:hover { background: var(--accent); color: #fff; }
+  .btn-filled {
+    background: var(--accent); color: #fff;
+    border-color: var(--accent);
+  }
+  .btn-filled:hover { background: var(--accent2); border-color: var(--accent2); color: #fff; }
+  .btn-gold {
+    border-color: var(--gold); color: var(--gold);
+  }
+  .btn-gold:hover { background: var(--gold); color: #fff; }
+
+  #theme-btn {
+    background: none; border: 1.5px solid var(--border);
+    color: var(--text2); cursor: pointer;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size: 1rem; transition: var(--transition);
+  }
+  #theme-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ─── HERO ─── */
+  #hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 100px 2rem 4rem;
+    position: relative; overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background: linear-gradient(135deg, var(--bg) 60%, var(--bg2) 100%);
+  }
+  .hero-line {
+    position: absolute; top: 0; right: 15%;
+    width: 1px; height: 100%;
+    background: linear-gradient(to bottom, transparent, var(--border) 20%, var(--border) 80%, transparent);
+    opacity: 0.5;
+  }
+  .hero-line2 {
+    position: absolute; top: 0; right: 35%;
+    width: 1px; height: 100%;
+    background: linear-gradient(to bottom, transparent, var(--border) 20%, var(--border) 80%, transparent);
+    opacity: 0.2;
+  }
+  .hero-inner {
+    max-width: 1200px; margin: 0 auto; width: 100%;
+    position: relative; z-index: 1;
+    display: grid; grid-template-columns: 1fr 380px; gap: 4rem; align-items: center;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-size: 0.75rem; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.5rem;
+  }
+  .hero-tag::before {
+    content:''; display:block; width:24px; height:1px; background: var(--gold);
+  }
+  .hero-title { color: var(--text); margin-bottom: 1.5rem; }
+  .hero-title span { color: var(--accent); }
+  .hero-accroche {
+    font-size: 1.1rem; line-height: 1.7; color: var(--text2);
+    max-width: 560px; margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+  .hero-meta {
+    display: flex; gap: 2rem; flex-wrap: wrap;
+    font-size: 0.8rem; color: var(--text3);
+    letter-spacing: 0.04em;
+  }
+  .hero-meta-item { display: flex; align-items: center; gap: 0.4rem; }
+  .hero-meta-item svg { opacity: 0.6; }
+
+  /* ─── PHOTO CARD ─── */
+  .hero-photo-wrap {
+    position: relative;
+    display: flex; justify-content: center;
+  }
+  .hero-photo-frame {
+    position: relative; width: 280px;
+  }
+  .hero-photo-frame::before {
+    content:''; position:absolute;
+    top: -12px; left: -12px; right: 12px; bottom: 12px;
+    border: 1.5px solid var(--gold);
+    border-radius: var(--radius-lg);
+    z-index: 0;
+  }
+  .hero-photo {
+    position: relative; z-index: 1;
+    width: 100%; aspect-ratio: 3/4;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    background: var(--bg2);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-photo-placeholder {
+    width: 100%; aspect-ratio: 3/4;
+    background: linear-gradient(135deg, var(--surface) 0%, var(--bg2) 100%);
+    border-radius: var(--radius-lg);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 1rem;
+    position: relative; z-index: 1;
+    border: 1.5px solid var(--border);
+  }
+  .hero-photo-initials {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem; font-weight: 600; color: var(--accent);
+    line-height: 1;
+  }
+  .hero-photo-name {
+    font-size: 0.75rem; font-weight: 500;
+    color: var(--text3); letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .hero-badge {
+    position: absolute; bottom: -16px; right: -16px;
+    background: var(--accent); color: #fff;
+    padding: 0.7rem 1rem;
+    border-radius: var(--radius);
+    font-size: 0.72rem; font-weight: 500;
+    letter-spacing: 0.04em;
+    box-shadow: 0 4px 20px rgba(28,58,94,0.25);
+    z-index: 2;
+    text-align: center; line-height: 1.4;
+  }
+
+  /* ─── STATS ─── */
+  #stats {
+    background: var(--accent);
+    padding: 3rem 2rem;
+  }
+  .stats-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem;
+  }
+  .stat-item { text-align: center; }
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem,4vw,3.5rem); font-weight: 700;
+    color: #fff; line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+  .stat-number span { color: var(--gold2); }
+  .stat-label {
+    font-size: 0.78rem; font-weight: 400;
+    color: rgba(255,255,255,0.65);
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .stat-divider {
+    width: 1px; background: rgba(255,255,255,0.15);
+    margin: 0 auto;
+  }
+
+  /* ─── SECTION ─── */
+  section { padding: 6rem 2rem; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.72rem; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--gold);
+    display: flex; align-items: center; gap: 0.6rem;
+    margin-bottom: 1rem;
+  }
+  .section-label::after {
+    content:''; flex:1; max-width:60px; height:1px; background: var(--gold);
+  }
+  .section-title { margin-bottom: 3.5rem; color: var(--text); }
+
+  /* ─── PROFIL ─── */
+  #profil { background: var(--surface); }
+  .profil-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
+  }
+  .profil-text p {
+    font-size: 1.05rem; line-height: 1.9; color: var(--text2);
+    margin-bottom: 1.5rem; font-weight: 300;
+  }
+  .profil-text strong { color: var(--text); font-weight: 500; }
+  .profil-highlight {
+    border-left: 3px solid var(--gold);
+    padding-left: 1.5rem; margin: 2rem 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; font-style: italic;
+    color: var(--text); line-height: 1.5;
+  }
+  .profil-info { display: flex; flex-direction: column; gap: 1.5rem; }
+  .profil-info-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+  }
+  .profil-info-title {
+    font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--text3); margin-bottom: 1rem; font-weight: 500;
+  }
+  .profil-tag-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .tag {
+    padding: 0.3rem 0.8rem;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    font-size: 0.78rem; color: var(--text2);
+    background: var(--surface);
+    white-space: nowrap;
+  }
+  .tag-accent {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: transparent;
+  }
+
+  /* ─── EXPÉRIENCES ─── */
+  #experiences { background: var(--bg); }
+  .exp-list { display: flex; flex-direction: column; gap: 2rem; }
+  .exp-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 2rem 2.5rem;
+    display: grid; grid-template-columns: 180px 1fr; gap: 2.5rem;
+    transition: var(--transition);
+    box-shadow: var(--card-shadow);
+    position: relative; overflow: hidden;
+  }
+  .exp-card::before {
+    content:''; position:absolute;
+    left:0; top:0; bottom:0; width:3px;
+    background: linear-gradient(to bottom, var(--accent), var(--gold));
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .exp-card:hover { transform: translateY(-2px); box-shadow: var(--card-shadow-hover); }
+  .exp-card:hover::before { opacity: 1; }
+  .exp-meta { padding-top: 0.25rem; }
+  .exp-period {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem; font-weight: 600; color: var(--accent);
+    line-height: 1; margin-bottom: 0.4rem;
+  }
+  .exp-location {
+    font-size: 0.75rem; color: var(--text3);
+    letter-spacing: 0.04em; margin-bottom: 0.8rem;
+    display: flex; align-items: center; gap: 0.3rem;
+  }
+  .exp-type-badge {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border: 1px solid var(--gold);
+    color: var(--gold); font-size: 0.68rem;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    border-radius: 2px;
+  }
+  .exp-content {}
+  .exp-company {
+    font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--gold); font-weight: 500; margin-bottom: 0.3rem;
+  }
+  .exp-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem; font-weight: 600; color: var(--text);
+    margin-bottom: 1.2rem; line-height: 1.2;
+  }
+  .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.5rem; }
+  .exp-bullets li {
+    font-size: 0.9rem; line-height: 1.6; color: var(--text2);
+    display: flex; gap: 0.8rem; align-items: flex-start;
+  }
+  .exp-bullets li::before {
+    content:''; display:block; min-width:4px; height:4px;
+    background: var(--gold); border-radius:50%;
+    margin-top: 0.55rem; flex-shrink:0;
+  }
+
+  /* ─── PROJETS ─── */
+  #projets { background: var(--bg2); }
+  .projets-intro {
+    font-size: 1.05rem; color: var(--text2); max-width: 620px;
+    line-height: 1.8; font-weight: 300; margin-bottom: 3rem;
+  }
+  .projets-company-group { margin-bottom: 3.5rem; }
+  .projets-company-header {
+    display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.5rem;
+    padding-bottom: 1rem; border-bottom: 1px solid var(--border);
+  }
+  .projets-company-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 600; color: var(--text);
+  }
+  .projets-company-label {
+    font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text3);
+  }
+  .projets-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem;
+  }
+  .projet-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    transition: var(--transition);
+    box-shadow: var(--card-shadow);
+  }
+  .projet-card:hover { transform: translateY(-3px); box-shadow: var(--card-shadow-hover); }
+  .projet-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem; font-weight: 700; color: var(--border);
+    line-height: 1; margin-bottom: 0.5rem;
+  }
+  .projet-icon {
+    width: 40px; height: 40px; border-radius: var(--radius);
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1rem; font-size: 1.1rem;
+  }
+  .projet-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem; font-weight: 600; color: var(--text);
+    margin-bottom: 0.75rem; line-height: 1.3;
+  }
+  .projet-desc {
+    font-size: 0.85rem; line-height: 1.7; color: var(--text2); font-weight: 300;
+  }
+  .projet-tags { display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:1rem; }
+  .projet-tag {
+    font-size: 0.68rem; padding: 0.2rem 0.6rem;
+    background: var(--bg2); color: var(--text3);
+    border-radius: 2px; letter-spacing: 0.04em;
+  }
+
+  /* ─── FORMATION ─── */
+  #formation { background: var(--surface); }
+  .formation-list { display: flex; flex-direction: column; gap: 0; }
+  .formation-item {
+    display: grid; grid-template-columns: 200px 1fr;
+    gap: 2.5rem; padding: 2.5rem 0;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+  .formation-item:last-child { border-bottom: none; }
+  .formation-year {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem; font-weight: 600; color: var(--accent);
+    padding-top: 0.2rem;
+  }
+  .formation-school {
+    font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--gold); font-weight: 500; margin-bottom: 0.3rem;
+  }
+  .formation-degree {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 600; color: var(--text);
+    margin-bottom: 0.5rem; line-height: 1.2;
+  }
+  .formation-detail { font-size: 0.85rem; color: var(--text3); line-height: 1.6; }
+  .formation-badge {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    margin-top: 0.8rem;
+    font-size: 0.72rem; color: var(--accent2);
+    letter-spacing: 0.04em;
+  }
+
+  /* ─── COMPÉTENCES ─── */
+  #competences { background: var(--bg); }
+  .competences-grid {
+    display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem;
+  }
+  .competence-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    transition: var(--transition);
+    box-shadow: var(--card-shadow);
+  }
+  .competence-block:hover { box-shadow: var(--card-shadow-hover); }
+  .competence-block-icon {
+    width: 36px; height: 36px; margin-bottom: 1rem;
+    color: var(--gold);
+  }
+  .competence-block-title {
+    font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--text3); font-weight: 500; margin-bottom: 1.2rem;
+  }
+  .competence-items { display: flex; flex-direction: column; gap: 0.9rem; }
+  .competence-item-row { display: flex; flex-direction: column; gap: 0.3rem; }
+  .competence-item-label {
+    display: flex; justify-content: space-between;
+    font-size: 0.85rem; color: var(--text2);
+  }
+  .competence-item-label span { font-size: 0.75rem; color: var(--text3); }
+  .competence-bar {
+    height: 3px; background: var(--border); border-radius: 2px; overflow: hidden;
+  }
+  .competence-bar-fill {
+    height: 100%; border-radius: 2px;
+    background: linear-gradient(to right, var(--accent), var(--gold));
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform 1s cubic-bezier(0.4,0,0.2,1);
+  }
+  .competence-bar-fill.animate { transform: scaleX(1); }
+
+  /* ─── CERTIFICATIONS / LANGUES ─── */
+  #certifications { background: var(--surface); }
+  .cert-lang-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .cert-list { display: flex; flex-direction: column; gap: 1rem; }
+  .cert-item {
+    display: flex; align-items: center; gap: 1.2rem;
+    padding: 1.2rem 1.5rem;
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    transition: var(--transition);
+  }
+  .cert-item:hover { border-color: var(--gold); }
+  .cert-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--gold); flex-shrink: 0;
+  }
+  .cert-item-text { flex: 1; }
+  .cert-item-name { font-size: 0.9rem; color: var(--text); font-weight: 500; }
+  .cert-item-sub { font-size: 0.75rem; color: var(--text3); margin-top: 0.1rem; }
+  .lang-list { display: flex; flex-direction: column; gap: 1.2rem; }
+  .lang-item { display: flex; flex-direction: column; gap: 0.4rem; }
+  .lang-row { display: flex; justify-content: space-between; align-items: center; }
+  .lang-name { font-size: 0.9rem; color: var(--text); font-weight: 500; }
+  .lang-level { font-size: 0.75rem; color: var(--gold); letter-spacing: 0.04em; }
+  .lang-bar {
+    height: 3px; background: var(--border); border-radius: 2px; overflow: hidden;
+  }
+  .lang-bar-fill {
+    height: 100%; border-radius: 2px;
+    background: linear-gradient(to right, var(--gold), var(--gold2));
+    transform-origin: left; transform: scaleX(0);
+    transition: transform 1.2s cubic-bezier(0.4,0,0.2,1);
+  }
+  .lang-bar-fill.animate { transform: scaleX(1); }
+
+  /* ─── CONTACT ─── */
+  #contact {
+    background: var(--accent);
+    padding: 6rem 2rem;
+    position: relative; overflow: hidden;
+  }
+  #contact::before {
+    content:''; position:absolute; inset:0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .contact-inner {
+    max-width: 900px; margin: 0 auto;
+    text-align: center; position: relative; z-index: 1;
+  }
+  .contact-label {
+    font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(255,255,255,0.5); margin-bottom: 1rem;
+    display: flex; align-items: center; justify-content: center; gap: 0.6rem;
+  }
+  .contact-label::before,.contact-label::after {
+    content:''; flex:1; max-width:40px; height:1px; background:rgba(255,255,255,0.2);
+  }
+  #contact h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem,5vw,3.5rem); font-weight: 500;
+    color: #fff; margin-bottom: 1rem; line-height: 1.15;
+  }
+  .contact-sub {
+    font-size: 1rem; color: rgba(255,255,255,0.65);
+    max-width: 500px; margin: 0 auto 2.5rem; line-height: 1.7;
+  }
+  .contact-actions { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+  .btn-white {
+    border-color: rgba(255,255,255,0.4); color: #fff;
+  }
+  .btn-white:hover { background: rgba(255,255,255,0.15); color: #fff; border-color: rgba(255,255,255,0.6); }
+  .btn-white-filled {
+    background: #fff; color: var(--accent); border-color: #fff;
+  }
+  .btn-white-filled:hover { background: rgba(255,255,255,0.9); color: var(--accent); border-color: rgba(255,255,255,0.9); }
+  .contact-links {
+    display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap;
+  }
+  .contact-link {
+    display: flex; align-items: center; gap: 0.5rem;
+    color: rgba(255,255,255,0.6); text-decoration: none;
+    font-size: 0.85rem; transition: color 0.2s;
+  }
+  .contact-link:hover { color: #fff; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #0A0D15; color: rgba(255,255,255,0.3);
+    padding: 2rem; text-align: center;
+    font-size: 0.78rem; letter-spacing: 0.04em;
+  }
+  footer span { color: var(--gold); }
+
+  /* ─── BACK TO TOP ─── */
+  #back-top {
+    position: fixed; bottom: 2rem; right: 2rem; z-index: 999;
+    width: 44px; height: 44px;
+    background: var(--accent); color: #fff;
+    border: none; cursor: pointer;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 20px rgba(28,58,94,0.3);
+    opacity: 0; transform: translateY(10px);
+    transition: opacity 0.3s, transform 0.3s;
+    font-size: 1rem;
+  }
+  #back-top.visible { opacity: 1; transform: translateY(0); }
+  #back-top:hover { background: var(--accent2); }
+
+  /* ─── MOBILE MENU ─── */
+  .hamburger {
+    display: none; flex-direction: column; gap: 5px;
+    background: none; border: none; cursor: pointer; padding: 4px;
+  }
+  .hamburger span {
+    display: block; width: 22px; height: 1.5px; background: var(--text);
+    transition: var(--transition);
+  }
+  .mobile-menu {
+    display: none;
+    position: fixed; top: 64px; left: 0; right: 0; z-index: 999;
+    background: var(--surface); border-bottom: 1px solid var(--border);
+    padding: 1.5rem 2rem; flex-direction: column; gap: 1rem;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-size: 0.85rem; font-weight: 500; text-decoration: none;
+    color: var(--text2); padding: 0.5rem 0; border-bottom: 1px solid var(--border);
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .mobile-menu a:last-child { border-bottom: none; }
+
+  /* ─── SCROLL REVEAL ─── */
+  .reveal {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* ─── HERO ANIMATE ─── */
+  .hero-animate {
+    opacity: 0; transform: translateY(30px);
+    animation: heroAnim 0.8s forwards;
+  }
+  @keyframes heroAnim { to { opacity:1; transform:translateY(0); } }
+  .ha-1 { animation-delay: 0.5s; }
+  .ha-2 { animation-delay: 0.7s; }
+  .ha-3 { animation-delay: 0.9s; }
+  .ha-4 { animation-delay: 1.1s; }
+  .ha-5 { animation-delay: 1.3s; }
+
+  /* ─── STAT COUNTER ─── */
+  .stat-animated { display: inline; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-photo-wrap { display: none; }
+    .stats-inner { grid-template-columns: repeat(2,1fr); }
+    .stat-divider { display: none; }
+    .profil-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .exp-card { grid-template-columns: 1fr; gap: 1rem; }
+    .competences-grid { grid-template-columns: 1fr; }
+    .cert-lang-grid { grid-template-columns: 1fr; }
+    .formation-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+  }
+  @media (max-width: 600px) {
+    .stats-inner { grid-template-columns: repeat(2,1fr); gap: 1.5rem; }
+    section { padding: 4rem 1.5rem; }
+  }
+
+  /* ─── DIVIDER ─── */
+  .gold-divider {
+    width: 60px; height: 2px;
+    background: linear-gradient(to right, var(--gold), var(--gold2));
+    margin-bottom: 2rem;
+  }
+
+  /* ─── LINKEDIN PHOTO ─── */
+  .linkedin-photo-ring {
+    width: 100%; aspect-ratio: 3/4;
+    border-radius: var(--radius-lg);
+    position: relative; z-index: 1;
+    overflow: hidden;
+    border: 1.5px solid var(--border);
+    background: var(--bg2);
+  }
+  .linkedin-photo-ring img {
+    width: 100%; height: 100%; object-fit: cover; object-position: top;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">T. Acar</a>
+    <ul class="nav-links">
+      <li><a href="#profil">Profil</a></li>
+      <li><a href="#experiences">Expériences</a></li>
+      <li><a href="#projets">Projets</a></li>
+      <li><a href="#formation">Formation</a></li>
+      <li><a href="#competences">Compétences</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button id="theme-btn" aria-label="Basculer le thème">🌙</button>
+      <a href="mailto:tajdinacar@icloud.com" class="btn btn-filled" style="display:none;" id="nav-cta">Contact</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#profil" onclick="closeMobile()">Profil</a>
+  <a href="#experiences" onclick="closeMobile()">Expériences</a>
+  <a href="#projets" onclick="closeMobile()">Projets</a>
+  <a href="#formation" onclick="closeMobile()">Formation</a>
+  <a href="#competences" onclick="closeMobile()">Compétences</a>
+  <a href="#certifications" onclick="closeMobile()">Certifications</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-line"></div>
+  <div class="hero-line2"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-tag hero-animate ha-1">Candidat en alternance · Finance & Performance</div>
+      <h1 class="hero-title hero-animate ha-2">Tajdin<br><span>Acar</span></h1>
+      <p class="hero-accroche hero-animate ha-3">
+        J'apporte une analyse financière rigoureuse<br>au service de la performance et de la décision.
+      </p>
+      <div class="hero-ctas hero-animate ha-4">
+        <a href="#experiences" class="btn btn-filled">Voir mes expériences</a>
+        <a href="#contact" class="btn btn-gold">Me contacter</a>
+        <a href="mailto:tajdinacar@icloud.com" class="btn" style="gap:0.4rem;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          tajdinacar@icloud.com
+        </a>
+      </div>
+      <div class="hero-meta hero-animate ha-5">
+        <span class="hero-meta-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Paris, France
+        </span>
+        <span class="hero-meta-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          Alternance 12 mois · Sept. 2026
+        </span>
+        <span class="hero-meta-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg>
+          ESSEC · IAE Paris 1
+        </span>
+      </div>
+    </div>
+    <div class="hero-photo-wrap hero-animate ha-3">
+      <div class="hero-photo-frame">
+        <div class="linkedin-photo-ring">
+          <!-- LinkedIn photo fetched via URL — replace src with your own image if needed -->
+          <img 
+            src="https://media.licdn.com/dms/image/v2/D4E03AQGvfMEMIxGHIA/profile-displayphoto-shrink_800_800/B4EZPzIKJhHkAc-/0/1734989155079?e=1753315200&v=beta&t=3ZFkxD9FNnkUB3D83HHQlIgVeJlcnfm6wWqmpiKmP5k"
+            alt="Tajdin Acar"
+            onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;background:var(--bg2)\'><div style=\'font-family:Cormorant Garamond,serif;font-size:5rem;font-weight:600;color:var(--accent);line-height:1\'>TA</div><div style=\'font-size:0.75rem;color:var(--text3);letter-spacing:0.1em;text-transform:uppercase\'>Tajdin Acar</div></div>'"
+          >
+        </div>
+        <div class="hero-badge">
+          Disponible<br>Sept. 2026
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div id="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-number"><span class="counter" data-target="2">0</span></div>
+      <div class="stat-label">Projets Power BI pilotés</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <div class="stat-number"><span class="counter" data-target="22">0</span></div>
+      <div class="stat-label">Distributeurs analysés</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <div class="stat-number"><span class="counter" data-target="23">0</span></div>
+      <div class="stat-label">Magasins suivis</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <div class="stat-number"><span class="counter" data-target="200">0</span><span style="color:var(--gold2);font-family:Cormorant Garamond,serif;font-size:2rem">M€</span></div>
+      <div class="stat-label">CA suivi chez Weldom</div>
+    </div>
+  </div>
+</div>
+
+<!-- PROFIL -->
+<section id="profil">
+  <div class="section-inner">
+    <div class="section-label">À propos</div>
+    <h2 class="section-title">Profil</h2>
+    <div class="profil-grid">
+      <div class="profil-text reveal">
+        <p>
+          Étudiant en <strong>Master Contrôle de Gestion et Audit Organisationnel</strong> à l'IAE Paris 1 Panthéon-Sorbonne, après un <strong>Global BBA à l'ESSEC Business School</strong>, je recherche une alternance de 12 mois à partir de septembre 2026 en analyse financière ou contrôle de gestion financier.
+        </p>
+        <div class="profil-highlight">
+          "Des données structurées. Des analyses fiables. Des décisions éclairées."
+        </div>
+        <p>
+          Mes expériences chez <strong>SFR</strong> et <strong>Weldom</strong> m'ont permis de développer une solide maîtrise des cycles de clôture, du pilotage budgétaire, et de la conception d'outils de reporting sous <strong>Power BI</strong>. J'interviens sur des périmètres significatifs — 22 distributeurs, 23 magasins, 200 M€ de chiffre d'affaires — avec une approche rigoureuse et orientée valeur ajoutée.
+        </p>
+        <div style="margin-top:2rem;">
+          <a href="#experiences" class="btn">Voir mes expériences</a>
+        </div>
+      </div>
+      <div class="profil-info reveal reveal-delay-2">
+        <div class="profil-info-card">
+          <div class="profil-info-title">Recherche d'alternance</div>
+          <p style="font-size:0.85rem;color:var(--text2);line-height:1.6;margin-bottom:1rem;">
+            Analyse financière · Contrôle de gestion · FP&A<br>
+            12 mois à partir de septembre 2026
+          </p>
+          <a href="mailto:tajdinacar@icloud.com" class="btn btn-filled" style="width:100%;justify-content:center;">Me contacter</a>
+        </div>
+        <div class="profil-info-card">
+          <div class="profil-info-title">Domaines d'expertise</div>
+          <div class="profil-tag-list">
+            <span class="tag tag-accent">Contrôle de gestion</span>
+            <span class="tag tag-accent">FP&A</span>
+            <span class="tag tag-accent">Power BI</span>
+            <span class="tag">Clôtures mensuelles</span>
+            <span class="tag">Budget & Forecast</span>
+            <span class="tag">Analyse d'écarts</span>
+            <span class="tag">Reporting financier</span>
+            <span class="tag">Liasses fiscales</span>
+          </div>
+        </div>
+        <div class="profil-info-card">
+          <div class="profil-info-title">Contact direct</div>
+          <div style="display:flex;flex-direction:column;gap:0.6rem;">
+            <a href="mailto:tajdinacar@icloud.com" style="font-size:0.85rem;color:var(--accent);text-decoration:none;display:flex;align-items:center;gap:0.5rem;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+              tajdinacar@icloud.com
+            </a>
+            <a href="tel:+33782992164" style="font-size:0.85rem;color:var(--accent);text-decoration:none;display:flex;align-items:center;gap:0.5rem;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.37 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6.29 6.29l1.62-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              +33 7 82 99 21 64
+            </a>
+            <a href="https://www.linkedin.com/in/tajdin-acar-600872226" target="_blank" style="font-size:0.85rem;color:var(--accent);text-decoration:none;display:flex;align-items:center;gap:0.5rem;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPÉRIENCES -->
+<section id="experiences">
+  <div class="section-inner">
+    <div class="section-label">Parcours professionnel</div>
+    <h2 class="section-title">Expériences</h2>
+    <div class="exp-list">
+
+      <!-- SFR -->
+      <div class="exp-card reveal">
+        <div class="exp-meta">
+          <div class="exp-period">2025<br>— 2026</div>
+          <div class="exp-location">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Paris, France
+          </div>
+          <span class="exp-type-badge">Alternance · 1 an</span>
+        </div>
+        <div class="exp-content">
+          <div class="exp-company">SFR</div>
+          <div class="exp-role">Alternant Contrôleur<br>de gestion financier</div>
+          <ul class="exp-bullets">
+            <li>Suivi mensuel de lignes de coûts et de revenus stratégiques dans le cadre des clôtures, du budget et des forecasts</li>
+            <li>Production d'analyses de performance et d'écarts réel / budget / forecast afin d'éclairer les décisions de gestion</li>
+            <li>Pilotage de deux projets Power BI pour la Direction Financière : fiabilisation du reporting et amélioration de la lisibilité des indicateurs financiers</li>
+            <li>Analyse financière de 22 distributeurs SFR à partir de leurs liasses fiscales — évaluation de la performance, rentabilité et équilibres financiers</li>
+          </ul>
+          <a href="#projets-sfr" class="btn btn-gold" style="font-size:0.72rem;padding:0.45rem 1rem;">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 8 16 12 12 16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+            Voir les projets
+          </a>
+        </div>
+      </div>
+
+      <!-- SJC -->
+      <div class="exp-card reveal reveal-delay-1">
+        <div class="exp-meta">
+          <div class="exp-period">2025<br>— 2026</div>
+          <div class="exp-location">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Paris, France
+          </div>
+          <span class="exp-type-badge">Engagement · 8 mois</span>
+        </div>
+        <div class="exp-content">
+          <div class="exp-company">Sorbonne Junior Conseil</div>
+          <div class="exp-role">Secrétaire Général</div>
+          <ul class="exp-bullets">
+            <li>Pilotage des sujets de gouvernance, de conformité et d'organisation interne de la Junior-Entreprise</li>
+            <li>Formalisation et amélioration des procédures pour fiabiliser les pratiques administratives et documentaires</li>
+            <li>Appui à la préparation des audits et au suivi des exigences de la CNJE dans une logique de professionnalisation continue</li>
+          </ul>
+          <a href="#projets-sjc" class="btn btn-gold" style="font-size:0.72rem;padding:0.45rem 1rem;">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 8 16 12 12 16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+            Voir les projets
+          </a>
+        </div>
+      </div>
+
+      <!-- Weldom -->
+      <div class="exp-card reveal reveal-delay-2">
+        <div class="exp-meta">
+          <div class="exp-period">2024<br>— 2025</div>
+          <div class="exp-location">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Oise, France
+          </div>
+          <span class="exp-type-badge">Stage + CDD · 7 mois</span>
+        </div>
+        <div class="exp-content">
+          <div class="exp-company">Weldom</div>
+          <div class="exp-role">Analyste FP&A</div>
+          <ul class="exp-bullets">
+            <li>Réalisation de clôtures mensuelles, forecasts et analyses budgétaires dans un environnement retail</li>
+            <li>Suivi de la performance de 23 magasins représentant ~200 M€ de CA — analyse de la marge, des stocks et de la masse salariale</li>
+            <li>Développement et amélioration d'outils de pilotage Power BI pour accompagner la planification financière à 3 ans</li>
+          </ul>
+          <a href="#projets-weldom" class="btn btn-gold" style="font-size:0.72rem;padding:0.45rem 1rem;">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 8 16 12 12 16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+            Voir les projets
+          </a>
+        </div>
+      </div>
+
+      <!-- SAS ASYA -->
+      <div class="exp-card reveal reveal-delay-3">
+        <div class="exp-meta">
+          <div class="exp-period">2021<br>— 2023</div>
+          <div class="exp-location">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Oise, France
+          </div>
+          <span class="exp-type-badge">Assistant · 2 ans</span>
+        </div>
+        <div class="exp-content">
+          <div class="exp-company">SAS ASYA</div>
+          <div class="exp-role">Assistant en gestion financière</div>
+          <ul class="exp-bullets">
+            <li>Appui au pilotage financier de l'entreprise à travers l'analyse mensuelle des résultats et le suivi des flux financiers</li>
+            <li>Préparation de synthèses de gestion à destination de la direction</li>
+          </ul>
+          <a href="#projets-asya" class="btn btn-gold" style="font-size:0.72rem;padding:0.45rem 1rem;">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 8 16 12 12 16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+            Voir les projets
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJETS -->
+<section id="projets">
+  <div class="section-inner">
+    <div class="section-label">Réalisations détaillées</div>
+    <h2 class="section-title">Détail des projets</h2>
+    <p class="projets-intro">
+      Aperçu des missions à fort impact conduites lors de mes expériences professionnelles — de la conception d'outils de reporting à l'analyse approfondie de données financières.
+    </p>
+
+    <!-- SFR -->
+    <div id="projets-sfr" class="projets-company-group reveal">
+      <div class="projets-company-header">
+        <div>
+          <div class="projets-company-name">SFR</div>
+          <div class="projets-company-label">Alternant Contrôleur de gestion financier · 2025–2026</div>
+        </div>
+      </div>
+      <div class="projets-grid">
+        <div class="projet-card">
+          <div class="projet-num">01</div>
+          <div class="projet-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          </div>
+          <div class="projet-title">Pilotage de deux projets Power BI — Direction Financière</div>
+          <div class="projet-desc">Conception et déploiement de deux tableaux de bord Power BI pour la Direction Financière de SFR. Objectifs : fiabiliser le reporting, accélérer la production des analyses et améliorer la lisibilité des indicateurs clés.</div>
+          <div class="projet-tags">
+            <span class="projet-tag">Power BI</span>
+            <span class="projet-tag">Reporting</span>
+            <span class="projet-tag">DAX</span>
+            <span class="projet-tag">Data Viz</span>
+          </div>
+        </div>
+        <div class="projet-card">
+          <div class="projet-num">02</div>
+          <div class="projet-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </div>
+          <div class="projet-title">Analyse financière de 22 distributeurs — Liasses fiscales</div>
+          <div class="projet-desc">Analyse approfondie des liasses fiscales de 22 distributeurs SFR : évaluation de leur santé financière, de leur rentabilité, de leur solvabilité et de leurs équilibres bilanciels. Synthèse actionnable pour la Direction.</div>
+          <div class="projet-tags">
+            <span class="projet-tag">Analyse financière</span>
+            <span class="projet-tag">Liasses fiscales</span>
+            <span class="projet-tag">Rentabilité</span>
+            <span class="projet-tag">Excel</span>
+          </div>
+        </div>
+        <div class="projet-card">
+          <div class="projet-num">03</div>
+          <div class="projet-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div class="projet-title">Clôtures · Budget · Forecast · Analyse d'écarts</div>
+          <div class="projet-desc">Participation active aux cycles mensuels de clôture et à la construction budgétaire. Production d'analyses d'écarts réel / budget / forecast avec identification des causes de dérive et recommandations à destination du management.</div>
+          <div class="projet-tags">
+            <span class="projet-tag">Clôtures</span>
+            <span class="projet-tag">Budget</span>
+            <span class="projet-tag">Forecast</span>
+            <span class="projet-tag">Écarts</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Weldom -->
+    <div id="projets-weldom" class="projets-company-group reveal">
+      <div class="projets-company-header">
+        <div>
+          <div class="projets-company-name">Weldom</div>
+          <div class="projets-company-label">Analyste FP&A · 2024–2025</div>
+        </div>
+      </div>
+      <div class="projets-grid">
+        <div class="projet-card">
+          <div class="projet-num">01</div>
+          <div class="projet-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h5l2 4v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          </div>
+          <div class="projet-title">Suivi de performance — 23 magasins · 200 M€ CA</div>
+          <div class="projet-desc">Pilotage de la performance de 23 magasins représentant environ 200 M€ de chiffre d'affaires : analyse de la marge brute, suivi des stocks, contrôle de la masse salariale et identification des leviers d'optimisation.</div>
+          <div class="projet-tags">
+            <span class="projet-tag">Performance</span>
+            <span class="projet-tag">Retail</span>
+            <span class="projet-tag">Marge</span>
+            <span class="projet-tag">Stocks</span>
+          </div>
+        </div>
+        <div class="projet-card">
+          <div class="projet-num">02</div>
+          <div class="projet-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <div class="projet-title">Clôtures mensuelles & analyses budgétaires</div>
+          <div class="projet-desc">Prise en charge des clôtures mensuelles et de la construction des prévisions budgétaires dans un environnement retail multi-sites. Analyse des écarts et production des reportings à destination du Comité de Direction.</div>
+          <div class="projet-tags">
+            <span class="projet-tag">Clôtures</span>
+            <span class="projet-tag">FP&A</span>
+            <span class="projet-tag">Reporting</span>
+          </div>
+        </div>
+        <div class="projet-card">
+          <div class="projet-num">03</div>
+          <div class="projet-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          </div>
+          <div class="projet-title">Développement d'outils Power BI — Planification à 3 ans</div>
+          <div class="projet-desc">Conception et déploiement d'outils Power BI pour structurer et accélérer la planification financière à 3 ans : modélisation des scénarios, suivi des indicateurs et amélioration de la gouvernance des données financières.</div>
+          <div class="projet-tags">
+            <span class="projet-tag">Power BI</span>
+            <span class="projet-tag">Planification</span>
+            <span class="projet-tag">Modélisation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SJC -->
+    <div id="projets-sjc" class="projets-company-group reveal">
+      <div class="projets-company-header">
+        <div>
+          <div class="projets-company-name">Sorbonne Junior Conseil</div>
+          <div class="projets-company-label">Secrétaire Général · 2025–2026</div>
+        </div>
+      </div>
+      <div class="projets-grid">
+        <div class="projet-card">
+          <div class="projet-num">01</div>
+          <div class="projet-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <div class="projet-title">Formalisation des procédures internes</div>
+          <div class="projet-desc">Cartographie et réécriture des procédures administratives et documentaires de la Junior-Entreprise. Mise en place de référentiels fiables garantissant la continuité opérationnelle et la conformité CNJE.</div>
+          <div class="projet-tags">
+            <span class="projet-tag">Procédures</span>
+            <span class="projet-tag">Conformité</span>
+            <span class="projet-tag">CNJE</span>
+          </div>
+        </div>
+        <div class="projet-card">
+          <div class="projet-num">02</div>
+          <div class="projet-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          </div>
+          <div class="projet-title">Préparation des audits — Exigences CNJE</div>
+          <div class="projet-desc">Pilotage de la préparation aux audits annuels de conformité CNJE : collecte des pièces justificatives, suivi des indicateurs de qualité et accompagnement des équipes dans une démarche d'amélioration continue.</div>
+          <div class="projet-tags">
+            <span class="projet-tag">Audit</span>
+            <span class="projet-tag">Contrôle interne</span>
+            <span class="projet-tag">Qualité</span>
+          </div>
+        </div>
+        <div class="projet-card">
+          <div class="projet-num">03</div>
+          <div class="projet-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg>
+          </div>
+          <div class="projet-title">Gouvernance & organisation interne</div>
+          <div class="projet-desc">Structuration de la gouvernance interne, animation des instances de direction et coordination des équipes. Mise en place de processus de décision clairs et d'une documentation institutionnelle rigoureuse.</div>
+          <div class="projet-tags">
+            <span class="projet-tag">Gouvernance</span>
+            <span class="projet-tag">Management</span>
+            <span class="projet-tag">Organisation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ASYA -->
+    <div id="projets-asya" class="projets-company-group reveal">
+      <div class="projets-company-header">
+        <div>
+          <div class="projets-company-name">SAS ASYA</div>
+          <div class="projets-company-label">Assistant en gestion financière · 2021–2023</div>
+        </div>
+      </div>
+      <div class="projets-grid">
+        <div class="projet-card">
+          <div class="projet-num">01</div>
+          <div class="projet-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div class="projet-title">Analyse mensuelle des résultats</div>
+          <div class="projet-desc">Participation à l'analyse mensuelle des résultats financiers de l'entreprise : suivi du compte de résultat, identification des tendances et préparation des éléments de commentaire pour la direction.</div>
+          <div class="projet-tags">
+            <span class="projet-tag">Analyse financière</span>
+            <span class="projet-tag">Résultats mensuels</span>
+          </div>
+        </div>
+        <div class="projet-card">
+          <div class="projet-num">02</div>
+          <div class="projet-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <div class="projet-title">Suivi des flux financiers & synthèses de gestion</div>
+          <div class="projet-desc">Suivi opérationnel des flux financiers (trésorerie, encaissements, décaissements) et production de synthèses de gestion claires, destinées à appuyer les décisions stratégiques et opérationnelles de la direction.</div>
+          <div class="projet-tags">
+            <span class="projet-tag">Flux financiers</span>
+            <span class="projet-tag">Trésorerie</span>
+            <span class="projet-tag">Reporting</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FORMATION -->
+<section id="formation">
+  <div class="section-inner">
+    <div class="section-label">Parcours académique</div>
+    <h2 class="section-title">Formation</h2>
+    <div class="formation-list">
+
+      <div class="formation-item reveal">
+        <div class="formation-year">2025 — 2027</div>
+        <div>
+          <div class="formation-school">Université Paris 1 Panthéon-Sorbonne · IAE Paris</div>
+          <div class="formation-degree">Master Contrôle de Gestion<br>et Audit Organisationnel</div>
+          <div class="formation-detail">Spécialisation en contrôle de gestion, audit, pilotage budgétaire, reporting et aide à la décision.</div>
+          <div class="formation-badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            Formation en alternance
+          </div>
+        </div>
+      </div>
+
+      <div class="formation-item reveal">
+        <div class="formation-year">2021 — 2025</div>
+        <div>
+          <div class="formation-school">ESSEC Business School · Cergy</div>
+          <div class="formation-degree">Global Bachelor of Business Administration (GBBA)</div>
+          <div class="formation-detail">Parcours orienté finance d'entreprise, contrôle de gestion, stratégie et analyse de la performance.</div>
+        </div>
+      </div>
+
+      <div class="formation-item reveal">
+        <div class="formation-year">2024</div>
+        <div>
+          <div class="formation-school">KU Leuven · Faculty of Economics and Business · Bruxelles</div>
+          <div class="formation-degree">Programme d'échange académique international</div>
+          <div class="formation-detail">Cours suivis en finance, économie et environnement international. Expérience en contexte académique multilingue et multiculturel.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- COMPÉTENCES -->
+<section id="competences">
+  <div class="section-inner">
+    <div class="section-label">Savoir-faire</div>
+    <h2 class="section-title">Compétences</h2>
+    <div class="competences-grid">
+
+      <div class="competence-block reveal">
+        <svg class="competence-block-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        <div class="competence-block-title">Analyse & Pilotage financier</div>
+        <div class="competence-items">
+          <div class="competence-item-row">
+            <div class="competence-item-label">Analyse financière <span>Expert</span></div>
+            <div class="competence-bar"><div class="competence-bar-fill" style="--w:0.95"></div></div>
+          </div>
+          <div class="competence-item-row">
+            <div class="competence-item-label">Contrôle de gestion <span>Expert</span></div>
+            <div class="competence-bar"><div class="competence-bar-fill" style="--w:0.92"></div></div>
+          </div>
+          <div class="competence-item-row">
+            <div class="competence-item-label">Budget & Forecast <span>Avancé</span></div>
+            <div class="competence-bar"><div class="competence-bar-fill" style="--w:0.90"></div></div>
+          </div>
+          <div class="competence-item-row">
+            <div class="competence-item-label">Clôtures mensuelles <span>Avancé</span></div>
+            <div class="competence-bar"><div class="competence-bar-fill" style="--w:0.88"></div></div>
+          </div>
+          <div class="competence-item-row">
+            <div class="competence-item-label">Reporting financier <span>Expert</span></div>
+            <div class="competence-bar"><div class="competence-bar-fill" style="--w:0.93"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="competence-block reveal reveal-delay-1">
+        <svg class="competence-block-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        <div class="competence-block-title">Outils & Technologie</div>
+        <div class="competence-items">
+          <div class="competence-item-row">
+            <div class="competence-item-label">Excel <span>Expert (HBS)</span></div>
+            <div class="competence-bar"><div class="competence-bar-fill" style="--w:0.97"></div></div>
+          </div>
+          <div class="competence-item-row">
+            <div class="competence-item-label">Power BI <span>Avancé</span></div>
+            <div class="competence-bar"><div class="competence-bar-fill" style="--w:0.88"></div></div>
+          </div>
+          <div class="competence-item-row">
+            <div class="competence-item-label">Google Sheets <span>Expert</span></div>
+            <div class="competence-bar"><div class="competence-bar-fill" style="--w:0.92"></div></div>
+          </div>
+          <div class="competence-item-row">
+            <div class="competence-item-label">SAP / Oracle ERP <span>Intermédiaire</span></div>
+            <div class="competence-bar"><div class="competence-bar-fill" style="--w:0.70"></div></div>
+          </div>
+          <div class="competence-item-row">
+            <div class="competence-item-label">Python <span>Intermédiaire</span></div>
+            <div class="competence-bar"><div class="competence-bar-fill" style="--w:0.65"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="competence-block reveal reveal-delay-2">
+        <svg class="competence-block-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <div class="competence-block-title">Compétences transverses</div>
+        <div class="profil-tag-list" style="margin-top:0.5rem;">
+          <span class="tag">Audit interne</span>
+          <span class="tag">Gouvernance</span>
+          <span class="tag">Liasses fiscales</span>
+          <span class="tag">FP&A</span>
+          <span class="tag">Data Analysis</span>
+          <span class="tag">Synthèse dirigeante</span>
+          <span class="tag">Communication financière</span>
+          <span class="tag">Pilotage de projet</span>
+          <span class="tag">IA (ChatGPT, Gemini)</span>
+          <span class="tag">CRM (Synergee)</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="section-inner">
+    <div class="section-label">Accréditations & Langues</div>
+    <h2 class="section-title">Certifications & Langues</h2>
+    <div class="cert-lang-grid">
+      <div>
+        <h3 style="font-family:'DM Sans',sans-serif;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text3);font-weight:500;margin-bottom:1.2rem;">Certifications professionnelles</h3>
+        <div class="cert-list">
+          <div class="cert-item reveal">
+            <div class="cert-dot"></div>
+            <div class="cert-item-text">
+              <div class="cert-item-name">Bloomberg Market Concepts (BMC)</div>
+              <div class="cert-item-sub">Bloomberg LP</div>
+            </div>
+          </div>
+          <div class="cert-item reveal reveal-delay-1">
+            <div class="cert-dot"></div>
+            <div class="cert-item-text">
+              <div class="cert-item-name">Bloomberg ESG</div>
+              <div class="cert-item-sub">Bloomberg LP</div>
+            </div>
+          </div>
+          <div class="cert-item reveal reveal-delay-2">
+            <div class="cert-dot"></div>
+            <div class="cert-item-text">
+              <div class="cert-item-name">Investment Banking Job Simulation</div>
+              <div class="cert-item-sub">JPMorgan Chase</div>
+            </div>
+          </div>
+          <div class="cert-item reveal reveal-delay-3">
+            <div class="cert-dot"></div>
+            <div class="cert-item-text">
+              <div class="cert-item-name">Candidat CFA Niveau 1</div>
+              <div class="cert-item-sub">CFA Institute</div>
+            </div>
+          </div>
+          <div class="cert-item reveal reveal-delay-4">
+            <div class="cert-dot"></div>
+            <div class="cert-item-text">
+              <div class="cert-item-name">Excel — Certification avancée</div>
+              <div class="cert-item-sub">Harvard Business School Online</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3 style="font-family:'DM Sans',sans-serif;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text3);font-weight:500;margin-bottom:1.2rem;">Langues pratiquées</h3>
+        <div class="lang-list">
+          <div class="lang-item reveal">
+            <div class="lang-row">
+              <span class="lang-name">Français</span>
+              <span class="lang-level">Langue maternelle</span>
+            </div>
+            <div class="lang-bar"><div class="lang-bar-fill" data-width="1"></div></div>
+          </div>
+          <div class="lang-item reveal reveal-delay-1">
+            <div class="lang-row">
+              <span class="lang-name">Anglais</span>
+              <span class="lang-level">Courant · C1</span>
+            </div>
+            <div class="lang-bar"><div class="lang-bar-fill" data-width="0.87"></div></div>
+          </div>
+          <div class="lang-item reveal reveal-delay-2">
+            <div class="lang-row">
+              <span class="lang-name">Kurde / Turc</span>
+              <span class="lang-level">Langue maternelle</span>
+            </div>
+            <div class="lang-bar"><div class="lang-bar-fill" data-width="1"></div></div>
+          </div>
+          <div class="lang-item reveal reveal-delay-3">
+            <div class="lang-row">
+              <span class="lang-name">Allemand</span>
+              <span class="lang-level">Intermédiaire · B1</span>
+            </div>
+            <div class="lang-bar"><div class="lang-bar-fill" data-width="0.55"></div></div>
+          </div>
+        </div>
+        <div style="margin-top:2rem;">
+          <h3 style="font-family:'DM Sans',sans-serif;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text3);font-weight:500;margin-bottom:1rem;">Centres d'intérêt</h3>
+          <div class="profil-tag-list">
+            <span class="tag">⚽ Football · 14 ans en club</span>
+            <span class="tag">🏃 Course à pied</span>
+            <span class="tag">📊 Finance & marchés</span>
+            <span class="tag">♟ Stratégie</span>
+            <span class="tag">📈 Performance</span>
+          </div>
+          <p style="font-size:0.78rem;color:var(--text3);margin-top:1rem;line-height:1.6;">
+            14 ans de pratique du football en club au niveau régional — participation à des tournois internationaux en Pologne et en Angleterre.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="contact-label">Disponible dès septembre 2026</div>
+    <h2>Discutons de votre<br>prochaine alternance</h2>
+    <p class="contact-sub">
+      Je recherche une alternance de 12 mois en analyse financière, contrôle de gestion ou FP&A. N'hésitez pas à me contacter.
+    </p>
+    <div class="contact-actions">
+      <a href="mailto:tajdinacar@icloud.com" class="btn btn-white-filled">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+        tajdinacar@icloud.com
+      </a>
+      <a href="https://www.linkedin.com/in/tajdin-acar-600872226" target="_blank" class="btn btn-white">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+    </div>
+    <div class="contact-links">
+      <a href="tel:+33782992164" class="contact-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.37 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6.29 6.29l1.62-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +33 7 82 99 21 64
+      </a>
+      <span style="color:rgba(255,255,255,0.2)">·</span>
+      <span class="contact-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Paris, France
+      </span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Tajdin Acar · Tous droits réservés · Portfolio conçu pour <span>GitHub Pages</span></p>
+</footer>
+
+<!-- BACK TO TOP -->
+<button id="back-top" aria-label="Retour en haut">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script>
+  // ─── THEME ───
+  const root = document.documentElement;
+  const themeBtn = document.getElementById('theme-btn');
+  const saved = localStorage.getItem('theme') || 'light';
+  if (saved === 'dark') { root.setAttribute('data-theme','dark'); themeBtn.textContent='☀️'; }
+  themeBtn.addEventListener('click', () => {
+    const isDark = root.getAttribute('data-theme') === 'dark';
+    root.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    themeBtn.textContent = isDark ? '🌙' : '☀️';
+    localStorage.setItem('theme', isDark ? 'light' : 'dark');
+  });
+
+  // ─── MOBILE MENU ───
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  function closeMobile() { mobileMenu.classList.remove('open'); }
+
+  // ─── BACK TO TOP ───
+  const backTop = document.getElementById('back-top');
+  window.addEventListener('scroll', () => {
+    backTop.classList.toggle('visible', window.scrollY > 400);
+  });
+  backTop.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
+
+  // ─── SCROLL REVEAL ───
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        // Animate bars
+        e.target.querySelectorAll('.competence-bar-fill, .lang-bar-fill').forEach(b => {
+          b.classList.add('animate');
+          const w = b.dataset.width || b.style.getPropertyValue('--w');
+          if (w) b.style.transform = `scaleX(${w})`;
+        });
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Animate ALL bars when scrolled into view (for sections with bars)
+  const barObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.competence-bar-fill').forEach(b => {
+          b.classList.add('animate');
+          const w = getComputedStyle(b).getPropertyValue('--w').trim();
+          if (w) b.style.transform = `scaleX(${w})`;
+        });
+        e.target.querySelectorAll('.lang-bar-fill').forEach(b => {
+          b.classList.add('animate');
+          const w = b.dataset.width;
+          if (w) b.style.transform = `scaleX(${w})`;
+        });
+      }
+    });
+  }, { threshold: 0.2 });
+  document.querySelectorAll('#competences, #certifications').forEach(s => barObserver.observe(s));
+
+  // ─── COUNTER ANIMATION ───
+  const counters = document.querySelectorAll('.counter');
+  const countObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      const target = +el.dataset.target;
+      const duration = 1200;
+      const start = performance.now();
+      const update = (now) => {
+        const progress = Math.min((now - start) / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.floor(ease * target);
+        if (progress < 1) requestAnimationFrame(update);
+        else el.textContent = target;
+      };
+      requestAnimationFrame(update);
+      countObs.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(c => countObs.observe(c));
+
+  // ─── NAV CTA on scroll ───
+  const navCta = document.getElementById('nav-cta');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) navCta.style.display = 'inline-flex';
+    else navCta.style.display = 'none';
+  });
+</script>
+</body>
+</html>
