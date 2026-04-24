@@ -1,1870 +1,2227 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Portfolio de Tajdin Acar, candidat en alternance en finance, controle de gestion et FP&A a partir de septembre 2026.">
-<title>Tajdin Acar | Finance & Performance</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #f4f1ea;
-    --bg-soft: #ece6dc;
-    --surface: #fffdfa;
-    --surface-soft: #f8f5ef;
-    --line: #d8d0c3;
-    --text: #171411;
-    --text-soft: #4d463e;
-    --text-muted: #7f776c;
-    --accent: #19395a;
-    --accent-soft: #2f5886;
-    --gold: #b48b52;
-    --gold-soft: #d4b07a;
-    --danger: #d50f2d;
-    --weldom: #eb641e;
-    --shadow: 0 20px 60px rgba(25, 57, 90, 0.09);
-    --shadow-soft: 0 10px 32px rgba(25, 57, 90, 0.08);
-    --radius: 8px;
-    --radius-lg: 18px;
-    --radius-pill: 999px;
-    --max: 1200px;
-    --transition: 220ms ease;
-  }
-  [data-theme="dark"] {
-    --bg: #0d1017;
-    --bg-soft: #141b26;
-    --surface: #171f2d;
-    --surface-soft: #1c2739;
-    --line: #2b3850;
-    --text: #f0ebe3;
-    --text-soft: #c6bcaf;
-    --text-muted: #91877d;
-    --accent: #74a7dd;
-    --accent-soft: #94bee8;
-    --gold: #d0aa73;
-    --gold-soft: #e4c896;
-    --shadow: 0 20px 60px rgba(0, 0, 0, 0.32);
-    --shadow-soft: 0 10px 32px rgba(0, 0, 0, 0.25);
-  }
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  html {
-    scroll-behavior: smooth;
-  }
-  body {
-    font-family: "DM Sans", sans-serif;
-    background:
-      radial-gradient(circle at top right, rgba(180, 139, 82, 0.09), transparent 32%),
-      linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
-    color: var(--text);
-    line-height: 1.5;
-    overflow-x: hidden;
-  }
-  img,
-  svg {
-    display: block;
-    max-width: 100%;
-  }
-  a {
-    color: inherit;
-  }
-  ::selection {
-    background: rgba(180, 139, 82, 0.2);
-  }
-  h1,
-  h2,
-  h3,
-  h4 {
-    font-family: "Cormorant Garamond", serif;
-    letter-spacing: -0.02em;
-  }
-  h1 {
-    font-size: clamp(3rem, 6vw, 5.6rem);
-    line-height: 0.98;
-    font-weight: 600;
-  }
-  h2 {
-    font-size: clamp(2rem, 4vw, 3.2rem);
-    line-height: 1.08;
-    font-weight: 600;
-  }
-  h3 {
-    font-size: 1.35rem;
-    font-weight: 600;
-  }
-  p {
-    color: var(--text-soft);
-  }
-  .container {
-    width: min(var(--max), calc(100% - 2.5rem));
-    margin: 0 auto;
-  }
-  .section {
-    padding: 6rem 0;
-  }
-  .section-header {
-    margin-bottom: 3rem;
-  }
-  .section-kicker {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.7rem;
-    font-size: 0.74rem;
-    text-transform: uppercase;
-    letter-spacing: 0.16em;
-    color: var(--gold);
-    margin-bottom: 0.9rem;
-  }
-  .section-kicker::before {
-    content: "";
-    width: 28px;
-    height: 1px;
-    background: currentColor;
-  }
-  .eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    padding: 0.45rem 0.9rem;
-    border: 1px solid rgba(180, 139, 82, 0.28);
-    border-radius: var(--radius-pill);
-    color: var(--gold);
-    background: rgba(180, 139, 82, 0.07);
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    font-size: 0.74rem;
-    font-weight: 600;
-  }
-  .eyebrow::before {
-    content: "";
-    width: 0.5rem;
-    height: 0.5rem;
-    border-radius: 50%;
-    background: currentColor;
-  }
-  .btn-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.9rem;
-  }
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.55rem;
-    min-height: 46px;
-    padding: 0.75rem 1.35rem;
-    border-radius: var(--radius-pill);
-    border: 1px solid var(--accent);
-    color: var(--accent);
-    background: transparent;
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-size: 0.76rem;
-    font-weight: 600;
-    transition: transform var(--transition), background var(--transition), color var(--transition), border-color var(--transition), box-shadow var(--transition);
-  }
-  .btn:hover {
-    transform: translateY(-1px);
-    background: var(--accent);
-    color: #ffffff;
-    box-shadow: var(--shadow-soft);
-  }
-  .btn-primary {
-    background: var(--accent);
-    color: #ffffff;
-  }
-  .btn-primary:hover {
-    background: var(--accent-soft);
-    border-color: var(--accent-soft);
-  }
-  .btn-gold {
-    border-color: var(--gold);
-    color: var(--gold);
-  }
-  .btn-gold:hover {
-    background: var(--gold);
-    border-color: var(--gold);
-    color: #ffffff;
-  }
-  .btn-light {
-    border-color: rgba(255, 255, 255, 0.35);
-    color: #ffffff;
-  }
-  .btn-light:hover {
-    background: rgba(255, 255, 255, 0.12);
-    border-color: rgba(255, 255, 255, 0.6);
-    color: #ffffff;
-  }
-  .btn-light-solid {
-    background: #ffffff;
-    border-color: #ffffff;
-    color: var(--accent);
-  }
-  .btn-light-solid:hover {
-    background: rgba(255, 255, 255, 0.92);
-    color: var(--accent);
-  }
-  .surface-card {
-    background: rgba(255, 253, 250, 0.88);
-    border: 1px solid var(--line);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-soft);
-    backdrop-filter: blur(10px);
-  }
-  nav {
-    position: sticky;
-    top: 0;
-    z-index: 40;
-    border-bottom: 1px solid rgba(216, 208, 195, 0.75);
-    background: rgba(244, 241, 234, 0.88);
-    backdrop-filter: blur(16px);
-  }
-  [data-theme="dark"] nav {
-    background: rgba(13, 16, 23, 0.86);
-  }
-  .nav-inner {
-    min-height: 72px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-  }
-  .nav-logo {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 1.45rem;
-    font-weight: 700;
-    text-decoration: none;
-    color: var(--accent);
-  }
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 1.7rem;
-    list-style: none;
-  }
-  .nav-links a,
-  .mobile-links a {
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-size: 0.76rem;
-    font-weight: 600;
-    color: var(--text-soft);
-    transition: color var(--transition);
-  }
-  .nav-links a:hover,
-  .mobile-links a:hover {
-    color: var(--accent);
-  }
-  .nav-actions {
-    display: flex;
-    align-items: center;
-    gap: 0.7rem;
-  }
-  .theme-toggle,
-  .menu-toggle {
-    width: 42px;
-    height: 42px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    border: 1px solid var(--line);
-    background: transparent;
-    color: var(--text-soft);
-    cursor: pointer;
-    transition: border-color var(--transition), color var(--transition), background var(--transition);
-  }
-  .theme-toggle:hover,
-  .menu-toggle:hover {
-    border-color: var(--gold);
-    color: var(--gold);
-  }
-  .menu-toggle {
-    display: none;
-  }
-  .menu-toggle span {
-    width: 18px;
-    height: 1.5px;
-    border-radius: 999px;
-    background: currentColor;
-    display: block;
-  }
-  .menu-toggle-inner {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-  .nav-cta {
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(-4px);
-    transition: opacity var(--transition), transform var(--transition);
-  }
-  .nav-cta.is-visible {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateY(0);
-  }
-  .mobile-panel {
-    display: none;
-    border-top: 1px solid var(--line);
-    background: var(--surface);
-  }
-  .mobile-panel.is-open {
-    display: block;
-  }
-  .mobile-links {
-    list-style: none;
-    display: grid;
-    gap: 1rem;
-    padding: 1.25rem 0 1.5rem;
-  }
-  .hero {
-    position: relative;
-    padding: 4.5rem 0 2.75rem;
-  }
-  .hero::before,
-  .hero::after {
-    content: "";
-    position: absolute;
-    inset: 0 auto 0 auto;
-    width: 1px;
-    background: linear-gradient(180deg, transparent, rgba(216, 208, 195, 0.9), transparent);
-    pointer-events: none;
-  }
-  .hero::before {
-    right: 16%;
-    opacity: 0.7;
-  }
-  .hero::after {
-    right: 34%;
-    opacity: 0.35;
-  }
-  .hero-grid {
-    position: relative;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
-    gap: 4rem;
-    align-items: center;
-  }
-  .hero-copy {
-    max-width: 680px;
-  }
-  .hero-copy h1 span {
-    color: var(--accent);
-  }
-  .hero-lead {
-    margin-top: 1.4rem;
-    max-width: 42rem;
-    font-size: 1.12rem;
-    line-height: 1.8;
-    font-weight: 300;
-  }
-  .hero-actions {
-    margin-top: 2rem;
-  }
-  .hero-meta {
-    margin-top: 2rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.2rem 1.8rem;
-    color: var(--text-muted);
-    font-size: 0.82rem;
-  }
-  .hero-meta span {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  .hero-meta svg {
-    width: 14px;
-    height: 14px;
-  }
-  .hero-photo-shell {
-    position: relative;
-    width: min(100%, 340px);
-    justify-self: end;
-  }
-  .hero-photo-shell::before {
-    content: "";
-    position: absolute;
-    inset: 20px -16px -16px 20px;
-    border: 1px solid rgba(180, 139, 82, 0.55);
-    border-radius: 28px;
-  }
-  .hero-photo-card {
-    position: relative;
-    overflow: hidden;
-    border-radius: 28px;
-    border: 1px solid rgba(216, 208, 195, 0.85);
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.15));
-    box-shadow: var(--shadow);
-  }
-  .hero-photo-img {
-    width: 100%;
-    aspect-ratio: 3 / 4;
-    object-fit: cover;
-    object-position: center top;
-    transition: filter var(--transition), transform 500ms ease;
-  }
-  .hero-photo-img.is-placeholder {
-    object-fit: cover;
-    background: linear-gradient(135deg, rgba(25, 57, 90, 0.08), rgba(180, 139, 82, 0.12));
-  }
-  .hero-photo-card:hover .hero-photo-img {
-    transform: scale(1.02);
-  }
-  .hero-badge {
-    position: absolute;
-    right: -10px;
-    bottom: -12px;
-    padding: 0.85rem 1rem;
-    border-radius: 16px;
-    background: linear-gradient(135deg, var(--accent), var(--accent-soft));
-    color: #ffffff;
-    box-shadow: 0 16px 32px rgba(25, 57, 90, 0.25);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-size: 0.7rem;
-    font-weight: 700;
-    text-align: center;
-  }
-  .stats {
-    padding: 1.3rem 0 4rem;
-  }
-  .stats-card {
-    background: linear-gradient(135deg, var(--accent), #11253a);
-    color: #ffffff;
-    border-radius: 24px;
-    padding: 1.5rem;
-    box-shadow: var(--shadow);
-  }
-  .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 1rem;
-  }
-  .stat-item {
-    text-align: center;
-    padding: 1.1rem 0.8rem;
-    border-right: 1px solid rgba(255, 255, 255, 0.12);
-  }
-  .stat-item:last-child {
-    border-right: 0;
-  }
-  .stat-number {
-    font-family: "Cormorant Garamond", serif;
-    font-size: clamp(2.4rem, 4vw, 3.5rem);
-    line-height: 1;
-    font-weight: 700;
-  }
-  .stat-number small {
-    font-size: 1.7rem;
-    color: var(--gold-soft);
-  }
-  .stat-label {
-    margin-top: 0.45rem;
-    color: rgba(255, 255, 255, 0.72);
-    font-size: 0.74rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-  .about-section {
-    background: rgba(255, 253, 250, 0.82);
-    border-top: 1px solid rgba(216, 208, 195, 0.55);
-    border-bottom: 1px solid rgba(216, 208, 195, 0.55);
-  }
-  .about-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
-    gap: 2rem;
-    align-items: start;
-  }
-  .about-copy p {
-    font-size: 1.03rem;
-    line-height: 1.9;
-    margin-bottom: 1.25rem;
-  }
-  .quote-block {
-    margin: 2rem 0;
-    padding: 1.2rem 0 1.2rem 1.3rem;
-    border-left: 3px solid var(--gold);
-    color: var(--text);
-    font-size: 1.45rem;
-    line-height: 1.45;
-    font-style: italic;
-  }
-  .stack {
-    display: grid;
-    gap: 1rem;
-  }
-  .info-card {
-    padding: 1.35rem;
-  }
-  .label {
-    display: block;
-    margin-bottom: 0.85rem;
-    font-size: 0.72rem;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: var(--text-muted);
-    font-weight: 700;
-  }
-  .tag-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.55rem;
-  }
-  .tag {
-    display: inline-flex;
-    align-items: center;
-    min-height: 34px;
-    padding: 0.35rem 0.8rem;
-    border-radius: var(--radius-pill);
-    border: 1px solid var(--line);
-    background: var(--surface);
-    color: var(--text-soft);
-    font-size: 0.8rem;
-  }
-  .tag.accent {
-    border-color: rgba(25, 57, 90, 0.25);
-    color: var(--accent);
-    background: rgba(25, 57, 90, 0.04);
-  }
-  .contact-list {
-    display: grid;
-    gap: 0.7rem;
-  }
-  .contact-list a {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.55rem;
-    text-decoration: none;
-    color: var(--accent);
-    word-break: break-word;
-  }
-  .timeline {
-    display: grid;
-    gap: 1.5rem;
-  }
-  .timeline-card {
-    display: grid;
-    grid-template-columns: 220px minmax(0, 1fr);
-    gap: 2rem;
-    padding: 1.9rem;
-    transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
-  }
-  .timeline-card:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow);
-  }
-  .timeline-meta {
-    display: grid;
-    align-content: start;
-    gap: 0.85rem;
-  }
-  .brand-badge {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 46px;
-    padding: 0.55rem 0.95rem;
-    border-radius: 14px;
-    border: 1px solid rgba(216, 208, 195, 0.95);
-    background: var(--surface-soft);
-    width: fit-content;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
-  }
-  .brand-badge span {
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    font-size: 0.95rem;
-  }
-  .brand-sfr {
-    background: linear-gradient(135deg, #d50f2d, #b2001b);
-    border-color: rgba(213, 15, 45, 0.3);
-    color: #ffffff;
-  }
-  .brand-weldom {
-    background: linear-gradient(135deg, #f27a2a, #dc5419);
-    border-color: rgba(242, 122, 42, 0.3);
-    color: #ffffff;
-  }
-  .brand-sjc {
-    background: linear-gradient(135deg, rgba(25, 57, 90, 0.1), rgba(180, 139, 82, 0.08));
-    color: var(--accent);
-  }
-  .brand-asya {
-    background: linear-gradient(135deg, rgba(77, 70, 62, 0.12), rgba(25, 57, 90, 0.08));
-    color: var(--text);
-  }
-  .brand-teaching {
-    background: linear-gradient(135deg, rgba(25, 57, 90, 0.08), rgba(25, 57, 90, 0.02));
-    color: var(--accent);
-  }
-  .brand-long {
-    font-size: 0.82rem;
-    letter-spacing: 0.04em;
-  }
-  .timeline-period {
-    color: var(--accent);
-    font-family: "Cormorant Garamond", serif;
-    font-size: 1.85rem;
-    font-weight: 700;
-    line-height: 1;
-  }
-  .timeline-place,
-  .timeline-type {
-    font-size: 0.77rem;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-  .timeline-type {
-    display: inline-flex;
-    align-items: center;
-    width: fit-content;
-    padding: 0.35rem 0.7rem;
-    border-radius: var(--radius-pill);
-    border: 1px solid rgba(180, 139, 82, 0.4);
-    color: var(--gold);
-    background: rgba(180, 139, 82, 0.06);
-  }
-  .timeline-company {
-    color: var(--gold);
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    font-size: 0.72rem;
-    font-weight: 700;
-  }
-  .timeline-role {
-    margin-top: 0.35rem;
-    font-size: 1.78rem;
-    line-height: 1.15;
-  }
-  .bullet-list {
-    list-style: none;
-    display: grid;
-    gap: 0.8rem;
-    margin: 1.1rem 0 1.5rem;
-  }
-  .bullet-list li {
-    position: relative;
-    padding-left: 1.1rem;
-    line-height: 1.7;
-    color: var(--text-soft);
-    font-size: 0.94rem;
-  }
-  .bullet-list li::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0.72rem;
-    width: 0.4rem;
-    height: 0.4rem;
-    border-radius: 50%;
-    background: var(--gold);
-  }
-  .projects-section {
-    background: linear-gradient(180deg, rgba(236, 230, 220, 0.7), rgba(244, 241, 234, 0.15));
-  }
-  .projects-intro {
-    max-width: 46rem;
-    font-size: 1.02rem;
-    line-height: 1.9;
-  }
-  .project-group {
-    margin-top: 3rem;
-  }
-  .project-group-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    padding-bottom: 1rem;
-    margin-bottom: 1.4rem;
-    border-bottom: 1px solid var(--line);
-  }
-  .project-group-title {
-    font-size: 1.7rem;
-  }
-  .project-group-label {
-    font-size: 0.76rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--text-muted);
-  }
-  .project-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1.2rem;
-  }
-  .project-card {
-    padding: 1.4rem;
-    transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
-  }
-  .project-card:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow);
-  }
-  .project-index {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 3rem;
-    line-height: 1;
-    color: rgba(25, 57, 90, 0.18);
-  }
-  .project-title {
-    margin-top: 0.6rem;
-    font-size: 1.2rem;
-    line-height: 1.3;
-  }
-  .project-card p {
-    margin-top: 0.8rem;
-    font-size: 0.9rem;
-    line-height: 1.8;
-  }
-  .project-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.45rem;
-    margin-top: 1rem;
-  }
-  .project-tags span {
-    font-size: 0.7rem;
-    padding: 0.35rem 0.65rem;
-    border-radius: var(--radius-pill);
-    background: rgba(25, 57, 90, 0.06);
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-  .education-list {
-    display: grid;
-    gap: 0;
-  }
-  .education-item {
-    display: grid;
-    grid-template-columns: 220px minmax(0, 1fr);
-    gap: 2rem;
-    padding: 2rem 0;
-    border-bottom: 1px solid var(--line);
-  }
-  .education-item:last-child {
-    border-bottom: 0;
-  }
-  .education-year {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 1.9rem;
-    font-weight: 700;
-    color: var(--accent);
-  }
-  .education-school {
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--gold);
-    font-size: 0.74rem;
-    font-weight: 700;
-  }
-  .education-degree {
-    margin-top: 0.35rem;
-    font-size: 1.5rem;
-    line-height: 1.2;
-  }
-  .education-detail {
-    margin-top: 0.65rem;
-    line-height: 1.8;
-  }
-  .education-note {
-    margin-top: 0.9rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.45rem;
-    color: var(--accent-soft);
-    font-size: 0.78rem;
-    letter-spacing: 0.04em;
-  }
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1.2rem;
-  }
-  .skill-card {
-    padding: 1.45rem;
-  }
-  .skill-label {
-    margin: 1rem 0 1.1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--text-muted);
-    font-size: 0.72rem;
-    font-weight: 700;
-  }
-  .skill-list {
-    display: grid;
-    gap: 0.95rem;
-  }
-  .skill-row {
-    display: grid;
-    gap: 0.42rem;
-  }
-  .skill-head {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    font-size: 0.88rem;
-    color: var(--text-soft);
-  }
-  .skill-head span:last-child {
-    color: var(--text-muted);
-    font-size: 0.76rem;
-  }
-  .meter {
-    height: 4px;
-    border-radius: 999px;
-    overflow: hidden;
-    background: rgba(216, 208, 195, 0.9);
-  }
-  .meter > span {
-    display: block;
-    height: 100%;
-    transform-origin: left;
-    transform: scaleX(0);
-    transition: transform 900ms cubic-bezier(0.4, 0, 0.2, 1);
-    background: linear-gradient(90deg, var(--accent), var(--gold));
-  }
-  .meter > span.animate {
-    transform: scaleX(var(--fill, 1));
-  }
-  .cert-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 2rem;
-  }
-  .mini-title {
-    margin-bottom: 1rem;
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--text-muted);
-    font-family: "DM Sans", sans-serif;
-    font-weight: 700;
-  }
-  .cert-list {
-    display: grid;
-    gap: 0.9rem;
-  }
-  .cert-item {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 0.9rem;
-    padding: 1rem 1.1rem;
-    border-radius: 16px;
-    border: 1px solid var(--line);
-    background: var(--surface-soft);
-  }
-  .cert-dot {
-    width: 9px;
-    height: 9px;
-    margin-top: 0.45rem;
-    border-radius: 50%;
-    background: var(--gold);
-  }
-  .cert-name {
-    color: var(--text);
-    font-weight: 600;
-  }
-  .cert-sub {
-    margin-top: 0.2rem;
-    font-size: 0.8rem;
-    color: var(--text-muted);
-  }
-  .cert-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    margin-top: 0.45rem;
-    font-size: 0.72rem;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    font-weight: 700;
-    color: var(--accent);
-    text-decoration: none;
-  }
-  .language-list {
-    display: grid;
-    gap: 1rem;
-  }
-  .language-row {
-    display: grid;
-    gap: 0.45rem;
-  }
-  .language-head {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-  }
-  .language-name {
-    color: var(--text);
-    font-weight: 600;
-  }
-  .language-level {
-    color: var(--gold);
-    font-size: 0.78rem;
-  }
-  .interest-copy {
-    margin-top: 1rem;
-    font-size: 0.84rem;
-    line-height: 1.7;
-  }
-  .contact-section {
-    position: relative;
-    overflow: hidden;
-    background:
-      radial-gradient(circle at top left, rgba(255, 255, 255, 0.12), transparent 28%),
-      linear-gradient(135deg, #16314d 0%, #0d1f33 100%);
-    color: #ffffff;
-  }
-  .contact-section::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-      linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-    background-size: 60px 60px;
-    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.75), transparent);
-    pointer-events: none;
-  }
-  .contact-card {
-    position: relative;
-    text-align: center;
-  }
-  .contact-card .section-kicker,
-  .contact-card p,
-  .contact-links a,
-  .contact-links span {
-    color: rgba(255, 255, 255, 0.74);
-  }
-  .contact-card .section-kicker::before {
-    background: rgba(255, 255, 255, 0.45);
-  }
-  .contact-card h2 {
-    color: #ffffff;
-    max-width: 14ch;
-    margin: 0 auto;
-  }
-  .contact-copy {
-    max-width: 36rem;
-    margin: 1rem auto 0;
-    line-height: 1.8;
-  }
-  .contact-actions {
-    margin-top: 2rem;
-    justify-content: center;
-  }
-  .contact-links {
-    margin-top: 2.25rem;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem 1.4rem;
-  }
-  .contact-links a {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.45rem;
-    text-decoration: none;
-  }
-  footer {
-    padding: 1.6rem 1rem 2.2rem;
-    text-align: center;
-    color: var(--text-muted);
-    font-size: 0.8rem;
-  }
-  footer span {
-    color: var(--gold);
-  }
-  .back-top {
-    position: fixed;
-    right: 1.5rem;
-    bottom: 1.5rem;
-    z-index: 30;
-    width: 48px;
-    height: 48px;
-    border: 0;
-    border-radius: 50%;
-    background: var(--accent);
-    color: #ffffff;
-    box-shadow: var(--shadow-soft);
-    cursor: pointer;
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(8px);
-    transition: opacity var(--transition), transform var(--transition), background var(--transition);
-  }
-  .back-top.is-visible {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateY(0);
-  }
-  .back-top:hover {
-    background: var(--accent-soft);
-  }
-  .reveal {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 700ms cubic-bezier(0.4, 0, 0.2, 1), transform 700ms cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  .reveal.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  .hero-reveal {
-    opacity: 0;
-    transform: translateY(26px);
-    animation: hero-in 700ms forwards;
-  }
-  .hero-delay-1 { animation-delay: 120ms; }
-  .hero-delay-2 { animation-delay: 260ms; }
-  .hero-delay-3 { animation-delay: 420ms; }
-  .hero-delay-4 { animation-delay: 580ms; }
-  .hero-delay-5 { animation-delay: 740ms; }
-  @keyframes hero-in {
-    to {
-      opacity: 1;
-      transform: translateY(0);
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio de Tajdin Acar, candidat en alternance en finance, controle de gestion et FP&A a partir de septembre 2026.">
+  <title>Tajdin Acar | Finance & Performance</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f2ea;
+      --bg-soft: #ede6dc;
+      --band: #fffaf2;
+      --surface: #fffdf9;
+      --surface-soft: #f7f1e8;
+      --surface-strong: #ffffff;
+      --line: rgba(30, 39, 51, 0.14);
+      --line-strong: rgba(30, 39, 51, 0.22);
+      --text: #141821;
+      --text-soft: #48505c;
+      --text-muted: #757d89;
+      --accent: #173f68;
+      --accent-strong: #0f2b49;
+      --accent-soft: #2f6495;
+      --gold: #a67c3e;
+      --gold-soft: #caa468;
+      --success: #256d55;
+      --danger: #c92b42;
+      --shadow: 0 24px 70px rgba(17, 34, 55, 0.12);
+      --shadow-soft: 0 12px 34px rgba(17, 34, 55, 0.09);
+      --radius: 8px;
+      --radius-lg: 18px;
+      --radius-pill: 999px;
+      --max: 1180px;
+      --transition: 220ms ease;
+      --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      --font-display: Georgia, "Times New Roman", serif;
     }
-  }
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
-  }
-  @media (max-width: 1080px) {
-    .nav-links {
-      display: none;
+    [data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #090f18;
+      --bg-soft: #111a27;
+      --band: #101927;
+      --surface: #151f2d;
+      --surface-soft: #1b2838;
+      --surface-strong: #202d3f;
+      --line: rgba(222, 230, 240, 0.14);
+      --line-strong: rgba(222, 230, 240, 0.24);
+      --text: #f8f3eb;
+      --text-soft: #d6cec1;
+      --text-muted: #aaa193;
+      --accent: #8abce9;
+      --accent-strong: #c3def6;
+      --accent-soft: #6ea7d9;
+      --gold: #f0c77e;
+      --gold-soft: #f4d99f;
+      --success: #7ed0ad;
+      --danger: #ff788c;
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.38);
+      --shadow-soft: 0 12px 34px rgba(0, 0, 0, 0.28);
     }
-    .menu-toggle {
-      display: inline-flex;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-    .hero-grid,
-    .about-grid,
-    .skills-grid,
-    .cert-grid,
-    .project-grid {
-      grid-template-columns: 1fr;
+    html {
+      scroll-behavior: smooth;
     }
-    .hero-grid {
-      gap: 2rem;
+    body {
+      min-height: 100vh;
+      font-family: var(--font-sans);
+      background:
+        linear-gradient(135deg, rgba(166, 124, 62, 0.08), transparent 28rem),
+        linear-gradient(225deg, rgba(23, 63, 104, 0.10), transparent 30rem),
+        linear-gradient(180deg, var(--bg), var(--bg-soft));
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      text-rendering: optimizeLegibility;
     }
-    .hero-photo-shell {
-      justify-self: start;
-      width: min(100%, 300px);
+    img,
+    svg {
+      display: block;
+      max-width: 100%;
     }
-    .timeline-card,
-    .education-item {
-      grid-template-columns: 1fr;
-      gap: 1.2rem;
+    a {
+      color: inherit;
     }
-    .stats-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+    ::selection {
+      background: rgba(166, 124, 62, 0.24);
     }
-    .stat-item {
-      border-right: 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: var(--font-display);
+      line-height: 1.08;
+      font-weight: 650;
+      letter-spacing: 0;
+      color: var(--text);
     }
-    .stat-item:nth-last-child(-n + 2) {
-      border-bottom: 0;
+    h1 {
+      font-size: clamp(3rem, 7vw, 6.2rem);
+      line-height: 0.95;
     }
-  }
-  @media (max-width: 720px) {
+    h2 {
+      font-size: clamp(2.1rem, 4vw, 3.4rem);
+    }
+    h3 {
+      font-size: 1.45rem;
+    }
+    p {
+      color: var(--text-soft);
+    }
+    strong {
+      color: var(--text);
+      font-weight: 700;
+    }
     .container {
-      width: min(var(--max), calc(100% - 1.5rem));
+      width: min(var(--max), calc(100% - 2.5rem));
+      margin: 0 auto;
     }
     .section {
-      padding: 4.4rem 0;
+      padding: 6rem 0;
+    }
+    .section-header {
+      max-width: 760px;
+      margin-bottom: 3rem;
+    }
+    .section-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 0.9rem;
+      color: var(--gold);
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .section-kicker::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: currentColor;
+    }
+    .section-lead {
+      margin-top: 1rem;
+      max-width: 46rem;
+      color: var(--text-soft);
+      font-size: 1.02rem;
+      line-height: 1.85;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      min-height: 36px;
+      padding: 0.42rem 0.88rem;
+      border: 1px solid color-mix(in srgb, var(--gold) 34%, transparent);
+      border-radius: var(--radius-pill);
+      background: color-mix(in srgb, var(--gold) 9%, transparent);
+      color: var(--gold);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 0.48rem;
+      height: 0.48rem;
+      border-radius: 50%;
+      background: currentColor;
+    }
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      min-height: 46px;
+      padding: 0.75rem 1.2rem;
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius-pill);
+      background: transparent;
+      color: var(--accent-strong);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition:
+        transform var(--transition),
+        border-color var(--transition),
+        background var(--transition),
+        color var(--transition),
+        box-shadow var(--transition);
+    }
+    .btn:hover {
+      transform: translateY(-1px);
+      border-color: var(--accent);
+      background: var(--accent);
+      color: #ffffff;
+      box-shadow: var(--shadow-soft);
+    }
+    [data-theme="dark"] .btn:hover {
+      color: #08111c;
+    }
+    .btn-primary {
+      border-color: var(--accent-strong);
+      background: var(--accent-strong);
+      color: #ffffff;
+    }
+    [data-theme="dark"] .btn-primary {
+      color: #08111c;
+    }
+    .btn-primary:hover {
+      border-color: var(--accent);
+      background: var(--accent);
+    }
+    .btn-gold {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+    .btn-gold:hover {
+      border-color: var(--gold);
+      background: var(--gold);
+      color: #15110a;
+    }
+    .btn-light {
+      border-color: rgba(255, 255, 255, 0.36);
+      color: #ffffff;
+    }
+    .btn-light:hover {
+      border-color: rgba(255, 255, 255, 0.75);
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+    }
+    .btn-light-solid {
+      border-color: #ffffff;
+      background: #ffffff;
+      color: #102b47;
+    }
+    .btn-light-solid:hover {
+      background: rgba(255, 255, 255, 0.92);
+      color: #102b47;
+    }
+    .surface-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(180deg, var(--surface), var(--surface-soft));
+      box-shadow: var(--shadow-soft);
+    }
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      border-bottom: 1px solid var(--line);
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      backdrop-filter: blur(18px);
+    }
+    .nav-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .nav-logo {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.45rem;
+      color: var(--accent-strong);
+      font-family: var(--font-display);
+      font-size: 1.42rem;
+      font-weight: 750;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .nav-logo span {
+      color: var(--gold);
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.45rem;
+      list-style: none;
+    }
+    .nav-links a,
+    .mobile-links a {
+      color: var(--text-soft);
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color var(--transition);
+    }
+    .nav-links a:hover,
+    .nav-links a.is-active,
+    .mobile-links a:hover {
+      color: var(--accent-strong);
+    }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+    .icon-button {
+      width: 42px;
+      height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: var(--surface);
+      color: var(--text-soft);
+      cursor: pointer;
+      transition:
+        color var(--transition),
+        border-color var(--transition),
+        background var(--transition),
+        transform var(--transition);
+    }
+    .icon-button:hover {
+      transform: translateY(-1px);
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+    .icon-button svg {
+      width: 18px;
+      height: 18px;
+    }
+    .icon-sun {
+      display: none;
+    }
+    [data-theme="dark"] .icon-moon {
+      display: none;
+    }
+    [data-theme="dark"] .icon-sun {
+      display: block;
+    }
+    .menu-toggle {
+      display: none;
+    }
+    .menu-lines {
+      display: grid;
+      gap: 4px;
+    }
+    .menu-lines span {
+      width: 18px;
+      height: 1.5px;
+      border-radius: 999px;
+      background: currentColor;
+    }
+    .nav-cta {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-4px);
+      transition: opacity var(--transition), transform var(--transition);
+    }
+    .nav-cta.is-visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+    .mobile-panel {
+      display: none;
+      border-top: 1px solid var(--line);
+      background: var(--surface);
+    }
+    .mobile-panel.is-open {
+      display: block;
+    }
+    .mobile-links {
+      display: grid;
+      gap: 1rem;
+      padding: 1.2rem 0 1.5rem;
+      list-style: none;
     }
     .hero {
-      padding-top: 2.8rem;
+      position: relative;
+      padding: 4.7rem 0 2.4rem;
     }
     .hero::before,
     .hero::after {
-      display: none;
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(180deg, transparent, var(--line), transparent);
+      pointer-events: none;
+    }
+    .hero::before {
+      right: 15%;
+      opacity: 0.7;
+    }
+    .hero::after {
+      right: 34%;
+      opacity: 0.42;
+    }
+    .hero-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(330px, 0.68fr);
+      gap: 4rem;
+      align-items: center;
+    }
+    .hero-copy {
+      max-width: 720px;
+    }
+    .hero-copy h1 {
+      margin-top: 1rem;
+    }
+    .hero-copy h1 span {
+      color: var(--accent-strong);
+    }
+    .hero-lead {
+      margin-top: 1.35rem;
+      max-width: 43rem;
+      color: var(--text-soft);
+      font-size: clamp(1.02rem, 1.7vw, 1.2rem);
+      font-weight: 400;
+      line-height: 1.85;
+    }
+    .hero-actions {
+      margin-top: 2rem;
     }
     .hero-meta {
-      flex-direction: column;
-      gap: 0.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem 1.5rem;
+      margin-top: 2rem;
+      color: var(--text-muted);
+      font-size: 0.84rem;
     }
-    .hero-photo-shell {
-      justify-self: center;
-      width: min(100%, 260px);
+    .hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .hero-meta svg {
+      width: 15px;
+      height: 15px;
+      color: var(--gold);
+    }
+    .executive-panel {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background:
+        linear-gradient(145deg, color-mix(in srgb, var(--surface-strong) 94%, transparent), var(--surface-soft)),
+        var(--surface);
+      box-shadow: var(--shadow);
+      isolation: isolate;
+    }
+    .executive-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, color-mix(in srgb, var(--line) 80%, transparent) 1px, transparent 1px),
+        linear-gradient(color-mix(in srgb, var(--line) 80%, transparent) 1px, transparent 1px);
+      background-size: 48px 48px;
+      opacity: 0.3;
+      mask-image: linear-gradient(160deg, rgba(0, 0, 0, 0.7), transparent 72%);
+      pointer-events: none;
+      z-index: -1;
+    }
+    .panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.4rem 1.45rem 1.15rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .panel-title {
+      color: var(--text-muted);
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .panel-title strong {
+      display: block;
+      margin-top: 0.2rem;
+      color: var(--text);
+      font-family: var(--font-display);
+      font-size: 1.55rem;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+    .panel-mark {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      border: 1px solid color-mix(in srgb, var(--gold) 55%, transparent);
+      background: color-mix(in srgb, var(--gold) 12%, transparent);
+      color: var(--gold);
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 800;
+    }
+    .panel-body {
+      padding: 1.35rem 1.45rem 1.5rem;
+    }
+    .focus-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      align-items: start;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .focus-label {
+      color: var(--gold);
+      font-size: 0.7rem;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .focus-main {
+      margin-top: 0.35rem;
+      color: var(--text);
+      font-size: 1.15rem;
+      font-weight: 800;
+      line-height: 1.3;
+    }
+    .focus-note {
+      margin-top: 0.45rem;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+    .availability {
+      min-width: 106px;
+      padding: 0.75rem 0.8rem;
+      border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+      border-radius: 16px;
+      background: color-mix(in srgb, var(--accent) 10%, transparent);
+      color: var(--accent-strong);
+      text-align: center;
+    }
+    .availability span {
+      display: block;
+      color: var(--text-muted);
+      font-size: 0.66rem;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .availability strong {
+      display: block;
+      margin-top: 0.25rem;
+      color: var(--accent-strong);
+      font-size: 1rem;
+    }
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 1.25rem;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+      background: color-mix(in srgb, var(--surface) 82%, transparent);
+    }
+    .metric {
+      min-height: 100px;
+      padding: 1rem;
+      border-right: 1px solid var(--line);
+    }
+    .metric:last-child {
+      border-right: 0;
+    }
+    .metric-value {
+      color: var(--text);
+      font-family: var(--font-display);
+      font-size: 2.15rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+    .metric-value small {
+      color: var(--gold);
+      font-size: 1rem;
+    }
+    .metric-label {
+      margin-top: 0.45rem;
+      color: var(--text-muted);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+    .chart-block {
+      margin-top: 1.25rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid var(--line);
+    }
+    .chart-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      color: var(--text-muted);
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .bar-chart {
+      height: 154px;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      align-items: end;
+      gap: 0.65rem;
+      padding: 0.4rem 0.1rem 0;
+    }
+    .bar {
+      position: relative;
+      min-width: 0;
+      height: var(--h);
+      border-radius: 999px 999px 6px 6px;
+      background: linear-gradient(180deg, var(--gold), var(--accent-soft));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+      transform: scaleY(0.18);
+      transform-origin: bottom;
+      transition: transform 900ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .bar.animate {
+      transform: scaleY(1);
+    }
+    .bar::after {
+      content: attr(data-label);
+      position: absolute;
+      left: 50%;
+      bottom: -1.35rem;
+      transform: translateX(-50%);
+      color: var(--text-muted);
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .panel-footer {
+      display: grid;
+      gap: 0.7rem;
+      margin-top: 2rem;
+    }
+    .signal {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.65rem;
+      align-items: start;
+      color: var(--text-soft);
+      font-size: 0.88rem;
+    }
+    .signal svg {
+      width: 17px;
+      height: 17px;
+      margin-top: 0.2rem;
+      color: var(--success);
+    }
+    .stats {
+      padding: 1.2rem 0 4rem;
+    }
+    .stats-card {
+      overflow: hidden;
+      border-radius: 24px;
+      background: linear-gradient(135deg, var(--accent-strong), #12263d);
+      color: #ffffff;
+      box-shadow: var(--shadow);
     }
     .stats-grid {
-      grid-template-columns: 1fr;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
     }
     .stat-item {
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      min-height: 136px;
+      display: grid;
+      align-content: center;
+      justify-items: center;
+      padding: 1.2rem 1rem;
+      border-right: 1px solid rgba(255, 255, 255, 0.14);
+      text-align: center;
     }
     .stat-item:last-child {
-      border-bottom: 0;
+      border-right: 0;
+    }
+    .stat-number {
+      color: #ffffff;
+      font-family: var(--font-display);
+      font-size: clamp(2.25rem, 4vw, 3.45rem);
+      font-weight: 800;
+      line-height: 1;
+    }
+    .stat-number small {
+      color: var(--gold-soft);
+      font-size: 1.45rem;
+    }
+    .stat-label {
+      margin-top: 0.55rem;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 0.73rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .about-section {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: color-mix(in srgb, var(--band) 86%, transparent);
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+      gap: 2rem;
+      align-items: start;
+    }
+    .about-copy p {
+      margin-bottom: 1.25rem;
+      color: var(--text-soft);
+      font-size: 1.03rem;
+      line-height: 1.9;
+    }
+    .quote-block {
+      margin: 2rem 0;
+      padding: 1.1rem 1.35rem;
+      border-left: 3px solid var(--gold);
+      background: color-mix(in srgb, var(--gold) 7%, transparent);
+      color: var(--text);
+      font-family: var(--font-display);
+      font-size: clamp(1.35rem, 2.5vw, 1.65rem);
+      font-style: italic;
+      line-height: 1.45;
+    }
+    .stack {
+      display: grid;
+      gap: 1rem;
+    }
+    .info-card {
+      padding: 1.35rem;
+    }
+    .label {
+      display: block;
+      margin-bottom: 0.85rem;
+      color: var(--text-muted);
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+    }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 0.35rem 0.78rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-pill);
+      background: color-mix(in srgb, var(--surface) 82%, transparent);
+      color: var(--text-soft);
+      font-size: 0.8rem;
+      line-height: 1.25;
+    }
+    .tag.accent {
+      border-color: color-mix(in srgb, var(--accent) 32%, transparent);
+      background: color-mix(in srgb, var(--accent) 9%, transparent);
+      color: var(--accent-strong);
+    }
+    .contact-list {
+      display: grid;
+      gap: 0.72rem;
+    }
+    .contact-list a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      color: var(--accent-strong);
+      text-decoration: none;
+      word-break: break-word;
+    }
+    .contact-list a:hover {
+      color: var(--gold);
+    }
+    .timeline {
+      display: grid;
+      gap: 1.5rem;
+    }
+    .timeline-card {
+      display: grid;
+      grid-template-columns: 220px minmax(0, 1fr);
+      gap: 2rem;
+      padding: 1.9rem;
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    }
+    .timeline-card:hover,
+    .project-card:hover,
+    .skill-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--line-strong);
+      box-shadow: var(--shadow);
+    }
+    .timeline-meta {
+      display: grid;
+      align-content: start;
+      gap: 0.85rem;
+    }
+    .brand-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      min-height: 46px;
+      padding: 0.55rem 0.95rem;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--surface-soft);
+      color: var(--text);
+    }
+    .brand-badge span {
+      font-size: 0.92rem;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .brand-sfr {
+      border-color: rgba(213, 15, 45, 0.34);
+      background: linear-gradient(135deg, #d50f2d, #a70720);
+      color: #ffffff;
+    }
+    .brand-weldom {
+      border-color: rgba(235, 100, 30, 0.36);
+      background: linear-gradient(135deg, #f27a2a, #dc5419);
+      color: #ffffff;
+    }
+    .brand-sjc {
+      background: color-mix(in srgb, var(--accent) 10%, var(--surface-soft));
+      color: var(--accent-strong);
+    }
+    .brand-asya {
+      background: color-mix(in srgb, var(--gold) 10%, var(--surface-soft));
+      color: var(--text);
+    }
+    .brand-teaching {
+      background: color-mix(in srgb, var(--success) 10%, var(--surface-soft));
+      color: var(--success);
+    }
+    .brand-long {
+      font-size: 0.8rem;
+      letter-spacing: 0.04em;
+    }
+    .timeline-period {
+      color: var(--accent-strong);
+      font-family: var(--font-display);
+      font-size: 1.85rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+    .timeline-place,
+    .timeline-type {
+      color: var(--text-muted);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .timeline-type {
+      display: inline-flex;
+      width: fit-content;
+      padding: 0.35rem 0.7rem;
+      border: 1px solid color-mix(in srgb, var(--gold) 42%, transparent);
+      border-radius: var(--radius-pill);
+      background: color-mix(in srgb, var(--gold) 8%, transparent);
+      color: var(--gold);
+    }
+    .timeline-company {
+      color: var(--gold);
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .timeline-role {
+      margin-top: 0.35rem;
+      font-size: 1.78rem;
+    }
+    .bullet-list {
+      display: grid;
+      gap: 0.78rem;
+      margin: 1.1rem 0 1.5rem;
+      list-style: none;
+    }
+    .bullet-list li {
+      position: relative;
+      padding-left: 1.1rem;
+      color: var(--text-soft);
+      font-size: 0.94rem;
+      line-height: 1.72;
+    }
+    .bullet-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.72rem;
+      width: 0.38rem;
+      height: 0.38rem;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+    .projects-section {
+      background: linear-gradient(180deg, color-mix(in srgb, var(--band) 64%, transparent), transparent);
+    }
+    .project-group {
+      margin-top: 3rem;
+    }
+    .project-group:first-of-type {
+      margin-top: 0;
     }
     .project-group-header {
-      align-items: start;
-      flex-direction: column;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.35rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--line);
     }
-    .contact-links {
-      flex-direction: column;
+    .project-group-title {
+      font-size: 1.72rem;
     }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
+    .project-group-label {
+      margin-top: 0.35rem;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
     }
-    *,
-    *::before,
-    *::after {
-      animation: none !important;
-      transition: none !important;
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.15rem;
     }
-    .reveal,
-    .hero-reveal {
-      opacity: 1 !important;
-      transform: none !important;
+    .project-card {
+      min-height: 100%;
+      padding: 1.4rem;
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    }
+    .project-index {
+      color: color-mix(in srgb, var(--accent) 28%, transparent);
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+    .project-title {
+      margin-top: 0.6rem;
+      font-size: 1.17rem;
+      line-height: 1.32;
+    }
+    .project-card p {
+      margin-top: 0.85rem;
+      color: var(--text-soft);
+      font-size: 0.9rem;
+      line-height: 1.8;
+    }
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 1rem;
+    }
+    .project-tags span {
+      padding: 0.34rem 0.64rem;
+      border-radius: var(--radius-pill);
+      background: color-mix(in srgb, var(--accent) 8%, transparent);
+      color: var(--text-muted);
+      font-size: 0.68rem;
+      font-weight: 850;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .education-list {
+      display: grid;
+    }
+    .education-item {
+      display: grid;
+      grid-template-columns: 220px minmax(0, 1fr);
+      gap: 2rem;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .education-item:last-child {
+      border-bottom: 0;
+    }
+    .education-year {
+      color: var(--accent-strong);
+      font-family: var(--font-display);
+      font-size: 1.9rem;
+      font-weight: 800;
+    }
+    .education-school {
+      color: var(--gold);
+      font-size: 0.74rem;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .education-degree {
+      margin-top: 0.35rem;
+      font-size: 1.5rem;
+    }
+    .education-detail {
+      margin-top: 0.65rem;
+      line-height: 1.8;
+    }
+    .education-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      margin-top: 0.9rem;
+      color: var(--accent-strong);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.15rem;
+    }
+    .skill-card {
+      padding: 1.45rem;
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    }
+    .skill-card > svg {
+      width: 36px;
+      height: 36px;
+      color: var(--gold);
+    }
+    .skill-label {
+      margin: 1rem 0 1.1rem;
+      color: var(--text-muted);
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .skill-list {
+      display: grid;
+      gap: 0.95rem;
+    }
+    .skill-row {
+      display: grid;
+      gap: 0.42rem;
+    }
+    .skill-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      color: var(--text-soft);
+      font-size: 0.88rem;
+    }
+    .skill-head span:last-child {
+      color: var(--text-muted);
+      font-size: 0.76rem;
+    }
+    .meter {
+      height: 4px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--line-strong) 50%, transparent);
     }
     .meter > span {
-      transform: scaleX(var(--fill, 1)) !important;
+      display: block;
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--gold));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 900ms cubic-bezier(0.4, 0, 0.2, 1);
     }
-  }
-</style>
+    .meter > span.animate {
+      transform: scaleX(var(--fill, 1));
+    }
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 2rem;
+    }
+    .mini-title {
+      margin-bottom: 1rem;
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .cert-list,
+    .language-list {
+      display: grid;
+      gap: 0.9rem;
+    }
+    .cert-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.9rem;
+      padding: 1rem 1.1rem;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--surface-soft);
+    }
+    .cert-dot {
+      width: 9px;
+      height: 9px;
+      margin-top: 0.45rem;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+    .cert-name {
+      color: var(--text);
+      font-weight: 750;
+    }
+    .cert-sub {
+      margin-top: 0.2rem;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+    .cert-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-top: 0.45rem;
+      color: var(--accent-strong);
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    .cert-link:hover {
+      color: var(--gold);
+    }
+    .language-row {
+      display: grid;
+      gap: 0.45rem;
+      padding: 0.35rem 0;
+    }
+    .language-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .language-name {
+      color: var(--text);
+      font-weight: 750;
+    }
+    .language-level {
+      color: var(--gold);
+      font-size: 0.78rem;
+      text-align: right;
+    }
+    .interest-copy {
+      margin-top: 1rem;
+      color: var(--text-soft);
+      font-size: 0.84rem;
+      line-height: 1.7;
+    }
+    .contact-section {
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 30%),
+        linear-gradient(135deg, #143250, #0b1d31);
+      color: #ffffff;
+    }
+    .contact-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px),
+        linear-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.75), transparent);
+      pointer-events: none;
+    }
+    .contact-card {
+      position: relative;
+      text-align: center;
+    }
+    .contact-card h2 {
+      max-width: 14ch;
+      margin: 0 auto;
+      color: #ffffff;
+    }
+    .contact-card .section-kicker,
+    .contact-card p,
+    .contact-links a,
+    .contact-links span {
+      color: rgba(255, 255, 255, 0.78);
+    }
+    .contact-card .section-kicker::before {
+      background: rgba(255, 255, 255, 0.48);
+    }
+    .contact-copy {
+      max-width: 36rem;
+      margin: 1rem auto 0;
+      line-height: 1.8;
+    }
+    .contact-actions {
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem 1.4rem;
+      margin-top: 2.25rem;
+    }
+    .contact-links a {
+      text-decoration: none;
+    }
+    footer {
+      padding: 1.6rem 1rem 2.2rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+    footer span {
+      color: var(--gold);
+    }
+    .back-top {
+      position: fixed;
+      right: 1.5rem;
+      bottom: 1.5rem;
+      z-index: 30;
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border: 0;
+      border-radius: 50%;
+      background: var(--accent-strong);
+      color: #ffffff;
+      box-shadow: var(--shadow-soft);
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(8px);
+      transition: opacity var(--transition), transform var(--transition), background var(--transition);
+    }
+    [data-theme="dark"] .back-top {
+      color: #08111c;
+    }
+    .back-top.is-visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+    .back-top:hover {
+      background: var(--accent);
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 700ms cubic-bezier(0.4, 0, 0.2, 1), transform 700ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .hero-reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      animation: hero-in 700ms forwards;
+    }
+    .hero-delay-1 { animation-delay: 120ms; }
+    .hero-delay-2 { animation-delay: 260ms; }
+    .hero-delay-3 { animation-delay: 420ms; }
+    .hero-delay-4 { animation-delay: 580ms; }
+    .hero-delay-5 { animation-delay: 740ms; }
+    @keyframes hero-in {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    @media (max-width: 1080px) {
+      .nav-links {
+        display: none;
+      }
+      .menu-toggle {
+        display: inline-flex;
+      }
+      .hero-grid,
+      .about-grid,
+      .skills-grid,
+      .cert-grid,
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-grid {
+        gap: 2.4rem;
+      }
+      .executive-panel {
+        max-width: 620px;
+      }
+      .timeline-card,
+      .education-item {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+      .stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .stat-item {
+        border-right: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+      }
+      .stat-item:nth-last-child(-n + 2) {
+        border-bottom: 0;
+      }
+    }
+    @media (max-width: 720px) {
+      .container {
+        width: min(var(--max), calc(100% - 1.5rem));
+      }
+      .section {
+        padding: 4.4rem 0;
+      }
+      .hero {
+        padding-top: 2.8rem;
+      }
+      .hero::before,
+      .hero::after {
+        display: none;
+      }
+      .nav-cta {
+        display: none;
+      }
+      .hero-meta {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      .focus-row,
+      .metric-grid {
+        grid-template-columns: 1fr;
+      }
+      .metric {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .metric:last-child {
+        border-bottom: 0;
+      }
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+      .stat-item:nth-last-child(-n + 2) {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+      }
+      .stat-item:last-child {
+        border-bottom: 0;
+      }
+      .project-group-header,
+      .language-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+      .contact-links {
+        flex-direction: column;
+      }
+      .back-top {
+        right: 1rem;
+        bottom: 1rem;
+      }
+    }
+    @media (max-width: 430px) {
+      .btn {
+        width: 100%;
+      }
+      .hero-actions .btn {
+        justify-content: center;
+      }
+      .panel-header,
+      .panel-body {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+      .bar-chart {
+        gap: 0.45rem;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+      .reveal,
+      .hero-reveal {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      .meter > span {
+        transform: scaleX(var(--fill, 1)) !important;
+      }
+      .bar {
+        transform: scaleY(1) !important;
+      }
+    }
+  </style>
 </head>
 <body>
-<nav>
-  <div class="container nav-inner">
-    <a class="nav-logo" href="#hero">T. Acar</a>
-    <ul class="nav-links" aria-label="Navigation principale">
-      <li><a href="#profil">Profil</a></li>
-      <li><a href="#experiences">Experiences</a></li>
-      <li><a href="#projets">Projets</a></li>
-      <li><a href="#formation">Formation</a></li>
-      <li><a href="#competences">Competences</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <div class="nav-actions">
-      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Basculer le theme" aria-pressed="false">🌙</button>
-      <a class="btn btn-primary nav-cta" id="nav-cta" href="mailto:tajdinacar@icloud.com">Contact</a>
-      <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-panel">
-        <span class="sr-only">Menu</span>
-        <span class="menu-toggle-inner" aria-hidden="true">
-          <span></span>
-          <span></span>
-          <span></span>
-        </span>
-      </button>
-    </div>
-  </div>
-  <div class="mobile-panel" id="mobile-panel">
-    <div class="container">
-      <ul class="mobile-links" aria-label="Navigation mobile">
+  <nav>
+    <div class="container nav-inner">
+      <a class="nav-logo" href="#hero" aria-label="Retour a l'accueil">T. Acar <span>Finance</span></a>
+      <ul class="nav-links" aria-label="Navigation principale">
         <li><a href="#profil">Profil</a></li>
-        <li><a href="#experiences">Experiences</a></li>
+        <li><a href="#experiences">Expériences</a></li>
         <li><a href="#projets">Projets</a></li>
         <li><a href="#formation">Formation</a></li>
-        <li><a href="#competences">Competences</a></li>
-        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#competences">Compétences</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-    </div>
-  </div>
-</nav>
-<main>
-  <section class="hero" id="hero">
-    <div class="container hero-grid">
-      <div class="hero-copy">
-        <div class="eyebrow hero-reveal hero-delay-1">Candidat en alternance | Finance & Performance</div>
-        <h1 class="hero-reveal hero-delay-2">Tajdin<br><span>Acar</span></h1>
-        <p class="hero-lead hero-reveal hero-delay-3">J'apporte une analyse financiere rigoureuse au service de la performance, du pilotage et de la prise de decision.</p>
-        <div class="btn-row hero-actions hero-reveal hero-delay-4">
-          <a class="btn btn-primary" href="#experiences">Voir mes experiences</a>
-          <a class="btn btn-gold" href="#contact">Me contacter</a>
-          <a class="btn" href="mailto:tajdinacar@icloud.com">tajdinacar@icloud.com</a>
-        </div>
-        <div class="hero-meta hero-reveal hero-delay-5">
-          <span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-            Paris, France
-          </span>
-          <span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
-            Alternance 12 mois | Sept. 2026
-          </span>
-          <span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M6 20v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"></path></svg>
-            ESSEC | IAE Paris 1
-          </span>
-        </div>
-      </div>
-      <div class="hero-photo-shell hero-reveal hero-delay-3">
-        <div class="hero-photo-card">
-          <!-- Place ta vraie photo dans assets/tajdin-acar-photo.jpg -->
-          <img
-            class="hero-photo-img is-placeholder"
-            id="profile-photo"
-            src="assets/profile-placeholder.svg"
-            data-photo-src="assets/tajdin-acar-photo.jpg"
-            alt="Portrait de Tajdin Acar">
-        </div>
-        <div class="hero-badge">Disponible<br>sept. 2026</div>
+      <div class="nav-actions">
+        <button class="icon-button theme-toggle" id="theme-toggle" type="button" aria-label="Basculer le thème" aria-pressed="false">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path d="M21 12.8A8.8 8.8 0 1 1 11.2 3 6.9 6.9 0 0 0 21 12.8Z"></path>
+          </svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+          </svg>
+        </button>
+        <a class="btn btn-primary nav-cta" id="nav-cta" href="mailto:tajdinacar@icloud.com">Contact</a>
+        <button class="icon-button menu-toggle" id="menu-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-panel">
+          <span class="sr-only">Menu</span>
+          <span class="menu-lines" aria-hidden="true"><span></span><span></span><span></span></span>
+        </button>
       </div>
     </div>
-  </section>
-  <section class="stats">
-    <div class="container">
-      <div class="stats-card">
-        <div class="stats-grid">
-          <div class="stat-item">
-            <div class="stat-number"><span class="counter" data-target="2">0</span></div>
-            <div class="stat-label">Projets Power BI pilotes</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number"><span class="counter" data-target="22">0</span></div>
-            <div class="stat-label">Distributeurs analyses</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number"><span class="counter" data-target="23">0</span></div>
-            <div class="stat-label">Magasins suivis</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number"><span class="counter" data-target="200">0</span><small>M EUR</small></div>
-            <div class="stat-label">Chiffre d'affaires suivi chez Weldom</div>
-          </div>
-        </div>
+    <div class="mobile-panel" id="mobile-panel">
+      <div class="container">
+        <ul class="mobile-links" aria-label="Navigation mobile">
+          <li><a href="#profil">Profil</a></li>
+          <li><a href="#experiences">Expériences</a></li>
+          <li><a href="#projets">Projets</a></li>
+          <li><a href="#formation">Formation</a></li>
+          <li><a href="#competences">Compétences</a></li>
+          <li><a href="#certifications">Certifications</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
       </div>
     </div>
-  </section>
-  <section class="section about-section" id="profil">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-kicker">A propos</div>
-        <h2>Profil</h2>
-      </div>
-      <div class="about-grid">
-        <div class="about-copy reveal">
-          <p>Etudiant en <strong>Master Controle de Gestion et Audit Organisationnel</strong> a l'IAE Paris 1 Pantheon-Sorbonne, apres un <strong>Global BBA a l'ESSEC Business School</strong>, je recherche une alternance de 12 mois a partir de septembre 2026 en analyse financiere, controle de gestion ou FP&amp;A.</p>
-          <div class="quote-block">"Des donnees structurees. Des analyses fiables. Des decisions eclairees."</div>
-          <p>Mes experiences chez <strong>SFR</strong> et <strong>Weldom</strong> m'ont permis de developper une solide maitrise des cycles de cloture, du pilotage budgetaire et de la conception d'outils de reporting sous <strong>Power BI</strong>. J'interviens sur des perimetres significatifs avec une approche rigoureuse, synthétique et orientee valeur.</p>
-          <p>En parallele, j'ai enseigne les <strong>mathematiques en cours particuliers</strong> de janvier a juin 2025, ce qui a renforce ma pedagogie, ma clarte d'explication et ma capacite a vulgariser des sujets techniques.</p>
-          <div class="btn-row">
-            <a class="btn" href="#experiences">Voir mes experiences</a>
+  </nav>
+  <main>
+    <section class="hero" id="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow hero-reveal hero-delay-1">Candidat en alternance | Finance & Performance</div>
+          <h1 class="hero-reveal hero-delay-2">Tajdin<br><span>Acar</span></h1>
+          <p class="hero-lead hero-reveal hero-delay-3">J'apporte une analyse financière rigoureuse au service de la performance, du pilotage et de la prise de décision.</p>
+          <div class="btn-row hero-actions hero-reveal hero-delay-4">
+            <a class="btn btn-primary" href="#experiences">Voir mes expériences</a>
+            <a class="btn btn-gold" href="#contact">Me contacter</a>
+            <a class="btn" href="mailto:tajdinacar@icloud.com">tajdinacar@icloud.com</a>
+          </div>
+          <div class="hero-meta hero-reveal hero-delay-5">
+            <span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              Paris, France
+            </span>
+            <span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+              Alternance 12 mois | Sept. 2026
+            </span>
+            <span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3 2 8l10 5 10-5-10-5Z"></path><path d="m2 17 10 5 10-5"></path><path d="m2 12 10 5 10-5"></path></svg>
+              ESSEC | IAE Paris 1
+            </span>
           </div>
         </div>
-        <div class="stack reveal">
-          <article class="surface-card info-card">
-            <span class="label">Recherche d'alternance</span>
-            <p>Analyse financiere | Controle de gestion | FP&amp;A<br>12 mois a partir de septembre 2026</p>
-            <div class="btn-row" style="margin-top: 1rem;">
-              <a class="btn btn-primary" href="mailto:tajdinacar@icloud.com">Me contacter</a>
+        <aside class="executive-panel hero-reveal hero-delay-3" aria-label="Synthèse professionnelle">
+          <div class="panel-header">
+            <div class="panel-title">Executive snapshot <strong>Finance & pilotage</strong></div>
+            <div class="panel-mark" aria-hidden="true">TA</div>
+          </div>
+          <div class="panel-body">
+            <div class="focus-row">
+              <div>
+                <div class="focus-label">Objectif</div>
+                <div class="focus-main">Alternance en analyse financière, contrôle de gestion ou FP&amp;A.</div>
+                <p class="focus-note">Profil orienté reporting, fiabilisation des données et aide à la décision.</p>
+              </div>
+              <div class="availability">
+                <span>Disponible</span>
+                <strong>Sept. 2026</strong>
+              </div>
+            </div>
+            <div class="metric-grid" aria-label="Indicateurs clés">
+              <div class="metric">
+                <div class="metric-value">2</div>
+                <div class="metric-label">Projets Power BI</div>
+              </div>
+              <div class="metric">
+                <div class="metric-value">22</div>
+                <div class="metric-label">Distributeurs analysés</div>
+              </div>
+              <div class="metric">
+                <div class="metric-value">200<small>M€</small></div>
+                <div class="metric-label">CA suivi</div>
+              </div>
+            </div>
+            <div class="chart-block" aria-label="Domaines de contribution">
+              <div class="chart-head"><span>Contribution</span><span>Budget · Forecast · Reporting</span></div>
+              <div class="bar-chart" aria-hidden="true">
+                <div class="bar" data-label="Clôture" style="--h: 64%"></div>
+                <div class="bar" data-label="Budget" style="--h: 78%"></div>
+                <div class="bar" data-label="BI" style="--h: 88%"></div>
+                <div class="bar" data-label="Marge" style="--h: 70%"></div>
+                <div class="bar" data-label="Audit" style="--h: 58%"></div>
+                <div class="bar" data-label="FP&A" style="--h: 82%"></div>
+              </div>
+            </div>
+            <div class="panel-footer">
+              <div class="signal">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+                <span>Culture du chiffre, esprit de synthèse et restitution claire auprès des équipes financières.</span>
+              </div>
+              <div class="signal">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+                <span>Expérience en retail, télécoms, gouvernance associative et analyse de liasses fiscales.</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+    <section class="stats" aria-label="Chiffres clés">
+      <div class="container">
+        <div class="stats-card">
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-number"><span class="counter" data-target="2">0</span></div>
+              <div class="stat-label">Projets Power BI pilotés</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number"><span class="counter" data-target="22">0</span></div>
+              <div class="stat-label">Distributeurs analysés</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number"><span class="counter" data-target="23">0</span></div>
+              <div class="stat-label">Magasins suivis</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number"><span class="counter" data-target="200">0</span><small>M€</small></div>
+              <div class="stat-label">Chiffre d'affaires suivi chez Weldom</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section about-section" id="profil">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-kicker">À propos</div>
+          <h2>Profil</h2>
+        </div>
+        <div class="about-grid">
+          <div class="about-copy reveal">
+            <p>Étudiant en <strong>Master Contrôle de Gestion et Audit Organisationnel</strong> à l'IAE Paris 1 Panthéon-Sorbonne, après un <strong>Global BBA à l'ESSEC Business School</strong>, je recherche une alternance de 12 mois à partir de septembre 2026 en analyse financière, contrôle de gestion ou FP&amp;A.</p>
+            <div class="quote-block">“Des données structurées. Des analyses fiables. Des décisions éclairées.”</div>
+            <p>Mes expériences chez <strong>SFR</strong> et <strong>Weldom</strong> m'ont permis de développer une solide maîtrise des cycles de clôture, du pilotage budgétaire et de la conception d'outils de reporting sous <strong>Power BI</strong>. J'interviens sur des périmètres significatifs avec une approche rigoureuse, synthétique et orientée valeur.</p>
+            <p>En parallèle, j'ai enseigné les <strong>mathématiques en cours particuliers</strong> de janvier à juin 2025, ce qui a renforcé ma pédagogie, ma clarté d'explication et ma capacité à vulgariser des sujets techniques.</p>
+            <div class="btn-row">
+              <a class="btn" href="#experiences">Voir mes expériences</a>
+            </div>
+          </div>
+          <div class="stack reveal">
+            <article class="surface-card info-card">
+              <span class="label">Recherche d'alternance</span>
+              <p>Analyse financière | Contrôle de gestion | FP&amp;A<br>12 mois à partir de septembre 2026</p>
+              <div class="btn-row" style="margin-top: 1rem;">
+                <a class="btn btn-primary" href="mailto:tajdinacar@icloud.com">Me contacter</a>
+              </div>
+            </article>
+            <article class="surface-card info-card">
+              <span class="label">Domaines d'expertise</span>
+              <div class="tag-list">
+                <span class="tag accent">Contrôle de gestion</span>
+                <span class="tag accent">FP&amp;A</span>
+                <span class="tag accent">Power BI</span>
+                <span class="tag">Clôtures mensuelles</span>
+                <span class="tag">Budget & Forecast</span>
+                <span class="tag">Analyse d'écarts</span>
+                <span class="tag">Reporting financier</span>
+                <span class="tag">Liasses fiscales</span>
+              </div>
+            </article>
+            <article class="surface-card info-card">
+              <span class="label">Contact direct</span>
+              <div class="contact-list">
+                <a href="mailto:tajdinacar@icloud.com">tajdinacar@icloud.com</a>
+                <a href="tel:+33782992164">+33 7 82 99 21 64</a>
+                <a href="https://www.linkedin.com/in/tajdin-acar-600872226" target="_blank" rel="noreferrer">LinkedIn</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="experiences">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-kicker">Parcours professionnel</div>
+          <h2>Expériences</h2>
+        </div>
+        <div class="timeline">
+          <article class="surface-card timeline-card reveal">
+            <div class="timeline-meta">
+              <div class="brand-badge brand-sfr"><span>SFR</span></div>
+              <div class="timeline-period">2025 - 2026</div>
+              <div class="timeline-place">Paris, France</div>
+              <div class="timeline-type">Alternance | 1 an</div>
+            </div>
+            <div>
+              <div class="timeline-company">SFR</div>
+              <h3 class="timeline-role">Alternant contrôleur de gestion financier</h3>
+              <ul class="bullet-list">
+                <li>Suivi mensuel de lignes de coûts et de revenus stratégiques dans le cadre des clôtures, du budget et des forecasts.</li>
+                <li>Production d'analyses de performance et d'écarts réel / budget / forecast pour éclairer la prise de décision.</li>
+                <li>Pilotage de deux projets Power BI pour la Direction Financière avec fiabilisation du reporting et meilleure lisibilité des indicateurs.</li>
+                <li>Analyse financière de 22 distributeurs SFR à partir de leurs liasses fiscales pour évaluer la rentabilité et les équilibres financiers.</li>
+              </ul>
+              <a class="btn btn-gold" href="#projets-sfr">Voir les projets</a>
             </div>
           </article>
-          <article class="surface-card info-card">
-            <span class="label">Domaines d'expertise</span>
-            <div class="tag-list">
-              <span class="tag accent">Controle de gestion</span>
-              <span class="tag accent">FP&amp;A</span>
-              <span class="tag accent">Power BI</span>
-              <span class="tag">Clotures mensuelles</span>
-              <span class="tag">Budget & Forecast</span>
-              <span class="tag">Analyse d'ecarts</span>
-              <span class="tag">Reporting financier</span>
-              <span class="tag">Liasses fiscales</span>
+          <article class="surface-card timeline-card reveal">
+            <div class="timeline-meta">
+              <div class="brand-badge brand-sjc"><span class="brand-long">Sorbonne Junior Conseil</span></div>
+              <div class="timeline-period">2025 - 2026</div>
+              <div class="timeline-place">Paris, France</div>
+              <div class="timeline-type">Engagement | 8 mois</div>
+            </div>
+            <div>
+              <div class="timeline-company">Sorbonne Junior Conseil</div>
+              <h3 class="timeline-role">Secrétaire général</h3>
+              <ul class="bullet-list">
+                <li>Pilotage des sujets de gouvernance, de conformité et d'organisation interne de la Junior-Entreprise.</li>
+                <li>Formalisation et amélioration des procédures pour fiabiliser les pratiques administratives et documentaires.</li>
+                <li>Appui à la préparation des audits et au suivi des exigences CNJE dans une logique de professionnalisation continue.</li>
+              </ul>
+              <a class="btn btn-gold" href="#projets-sjc">Voir les projets</a>
             </div>
           </article>
-          <article class="surface-card info-card">
-            <span class="label">Contact direct</span>
-            <div class="contact-list">
-              <a href="mailto:tajdinacar@icloud.com">tajdinacar@icloud.com</a>
-              <a href="tel:+33782992164">+33 7 82 99 21 64</a>
-              <a href="https://www.linkedin.com/in/tajdin-acar-600872226" target="_blank" rel="noreferrer">LinkedIn</a>
+          <article class="surface-card timeline-card reveal">
+            <div class="timeline-meta">
+              <div class="brand-badge brand-weldom"><span>Weldom</span></div>
+              <div class="timeline-period">2024 - 2025</div>
+              <div class="timeline-place">Oise, France</div>
+              <div class="timeline-type">Stage + CDD | 7 mois</div>
+            </div>
+            <div>
+              <div class="timeline-company">Weldom</div>
+              <h3 class="timeline-role">Analyste FP&amp;A</h3>
+              <ul class="bullet-list">
+                <li>Réalisation de clôtures mensuelles, forecasts et analyses budgétaires dans un environnement retail.</li>
+                <li>Suivi de la performance de 23 magasins représentant environ 200 M€ de chiffre d'affaires avec analyse de la marge, des stocks et de la masse salariale.</li>
+                <li>Développement et amélioration d'outils de pilotage Power BI pour accompagner la planification financière à 3 ans.</li>
+              </ul>
+              <a class="btn btn-gold" href="#projets-weldom">Voir les projets</a>
+            </div>
+          </article>
+          <article class="surface-card timeline-card reveal">
+            <div class="timeline-meta">
+              <div class="brand-badge brand-teaching"><span>Cours de maths</span></div>
+              <div class="timeline-period">Jan. - Juin 2025</div>
+              <div class="timeline-place">Paris, France</div>
+              <div class="timeline-type">Freelance | 6 mois</div>
+            </div>
+            <div>
+              <div class="timeline-company">Cours particuliers</div>
+              <h3 class="timeline-role">Professeur de mathématiques</h3>
+              <ul class="bullet-list">
+                <li>Accompagnement d'élèves de lycée et de classes préparatoires en mathématiques et analyse quantitative.</li>
+                <li>Conception de supports pédagogiques personnalisés adaptés au niveau et aux objectifs de chaque élève.</li>
+                <li>Renforcement d'une communication claire et de la capacité à rendre accessibles des concepts complexes.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="surface-card timeline-card reveal">
+            <div class="timeline-meta">
+              <div class="brand-badge brand-asya"><span>ASYA</span></div>
+              <div class="timeline-period">2021 - 2023</div>
+              <div class="timeline-place">Oise, France</div>
+              <div class="timeline-type">Assistant | 2 ans</div>
+            </div>
+            <div>
+              <div class="timeline-company">SAS ASYA</div>
+              <h3 class="timeline-role">Assistant en gestion financière</h3>
+              <ul class="bullet-list">
+                <li>Appui au pilotage financier grâce à l'analyse mensuelle des résultats et au suivi des flux financiers.</li>
+                <li>Préparation de synthèses de gestion à destination de la direction.</li>
+              </ul>
+              <a class="btn btn-gold" href="#projets-asya">Voir les projets</a>
             </div>
           </article>
         </div>
       </div>
-    </div>
-  </section>
-  <section class="section" id="experiences">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-kicker">Parcours professionnel</div>
-        <h2>Experiences</h2>
-      </div>
-      <div class="timeline">
-        <article class="surface-card timeline-card reveal">
-          <div class="timeline-meta">
+    </section>
+    <section class="section projects-section" id="projets">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-kicker">Réalisations détaillées</div>
+          <h2>Détail des projets</h2>
+          <p class="section-lead">Aperçu de missions à fort impact conduites lors de mes expériences professionnelles, de la conception d'outils de reporting à l'analyse approfondie de données financières.</p>
+        </div>
+        <div class="project-group reveal" id="projets-sfr">
+          <div class="project-group-header">
+            <div>
+              <h3 class="project-group-title">SFR</h3>
+              <div class="project-group-label">Alternant contrôleur de gestion financier | 2025 - 2026</div>
+            </div>
             <div class="brand-badge brand-sfr"><span>SFR</span></div>
-            <div class="timeline-period">2025 - 2026</div>
-            <div class="timeline-place">Paris, France</div>
-            <div class="timeline-type">Alternance | 1 an</div>
           </div>
-          <div>
-            <div class="timeline-company">SFR</div>
-            <h3 class="timeline-role">Alternant controleur de gestion financier</h3>
-            <ul class="bullet-list">
-              <li>Suivi mensuel de lignes de couts et de revenus strategiques dans le cadre des clotures, du budget et des forecasts.</li>
-              <li>Production d'analyses de performance et d'ecarts reel / budget / forecast pour eclairer la prise de decision.</li>
-              <li>Pilotage de deux projets Power BI pour la Direction Financiere avec fiabilisation du reporting et meilleure lisibilite des indicateurs.</li>
-              <li>Analyse financiere de 22 distributeurs SFR a partir de leurs liasses fiscales pour evaluer la rentabilite et les equilibres financiers.</li>
-            </ul>
-            <a class="btn btn-gold" href="#projets-sfr">Voir les projets</a>
+          <div class="project-grid">
+            <article class="surface-card project-card">
+              <div class="project-index">01</div>
+              <h4 class="project-title">Pilotage de deux projets Power BI pour la Direction Financière</h4>
+              <p>Conception et déploiement de deux tableaux de bord Power BI afin de fiabiliser le reporting, accélérer la production des analyses et rendre les indicateurs clés plus lisibles.</p>
+              <div class="project-tags"><span>Power BI</span><span>Reporting</span><span>DAX</span><span>Data Viz</span></div>
+            </article>
+            <article class="surface-card project-card">
+              <div class="project-index">02</div>
+              <h4 class="project-title">Analyse financière de 22 distributeurs à partir des liasses fiscales</h4>
+              <p>Analyse de la santé financière, de la rentabilité, de la solvabilité et des équilibres bilanciels avec restitution claire et exploitable pour la Direction.</p>
+              <div class="project-tags"><span>Analyse financière</span><span>Liasses fiscales</span><span>Rentabilité</span><span>Excel</span></div>
+            </article>
+            <article class="surface-card project-card">
+              <div class="project-index">03</div>
+              <h4 class="project-title">Clôtures, budget, forecast et analyses d'écarts</h4>
+              <p>Participation active aux cycles mensuels de clôture et à la construction budgétaire avec identification des causes de dérive entre réel, budget et forecast.</p>
+              <div class="project-tags"><span>Clôtures</span><span>Budget</span><span>Forecast</span><span>Écarts</span></div>
+            </article>
           </div>
-        </article>
-        <article class="surface-card timeline-card reveal">
-          <div class="timeline-meta">
-            <div class="brand-badge brand-sjc"><span class="brand-long">Sorbonne Junior Conseil</span></div>
-            <div class="timeline-period">2025 - 2026</div>
-            <div class="timeline-place">Paris, France</div>
-            <div class="timeline-type">Engagement | 8 mois</div>
-          </div>
-          <div>
-            <div class="timeline-company">Sorbonne Junior Conseil</div>
-            <h3 class="timeline-role">Secretaire general</h3>
-            <ul class="bullet-list">
-              <li>Pilotage des sujets de gouvernance, de conformite et d'organisation interne de la Junior-Entreprise.</li>
-              <li>Formalisation et amelioration des procedures pour fiabiliser les pratiques administratives et documentaires.</li>
-              <li>Appui a la preparation des audits et au suivi des exigences CNJE dans une logique de professionnalisation continue.</li>
-            </ul>
-            <a class="btn btn-gold" href="#projets-sjc">Voir les projets</a>
-          </div>
-        </article>
-        <article class="surface-card timeline-card reveal">
-          <div class="timeline-meta">
+        </div>
+        <div class="project-group reveal" id="projets-weldom">
+          <div class="project-group-header">
+            <div>
+              <h3 class="project-group-title">Weldom</h3>
+              <div class="project-group-label">Analyste FP&amp;A | 2024 - 2025</div>
+            </div>
             <div class="brand-badge brand-weldom"><span>Weldom</span></div>
-            <div class="timeline-period">2024 - 2025</div>
-            <div class="timeline-place">Oise, France</div>
-            <div class="timeline-type">Stage + CDD | 7 mois</div>
           </div>
-          <div>
-            <div class="timeline-company">Weldom</div>
-            <h3 class="timeline-role">Analyste FP&amp;A</h3>
-            <ul class="bullet-list">
-              <li>Realisation de clotures mensuelles, forecasts et analyses budgetaires dans un environnement retail.</li>
-              <li>Suivi de la performance de 23 magasins representant environ 200 M EUR de chiffre d'affaires avec analyse de la marge, des stocks et de la masse salariale.</li>
-              <li>Developpement et amelioration d'outils de pilotage Power BI pour accompagner la planification financiere a 3 ans.</li>
-            </ul>
-            <a class="btn btn-gold" href="#projets-weldom">Voir les projets</a>
+          <div class="project-grid">
+            <article class="surface-card project-card">
+              <div class="project-index">01</div>
+              <h4 class="project-title">Suivi de performance de 23 magasins et 200 M€ de CA</h4>
+              <p>Pilotage de la performance de magasins retail via l'analyse de la marge brute, des stocks, de la masse salariale et des leviers d'optimisation.</p>
+              <div class="project-tags"><span>Performance</span><span>Retail</span><span>Marge</span><span>Stocks</span></div>
+            </article>
+            <article class="surface-card project-card">
+              <div class="project-index">02</div>
+              <h4 class="project-title">Clôtures mensuelles et analyses budgétaires</h4>
+              <p>Prise en charge des clôtures mensuelles et de la construction des prévisions budgétaires dans un environnement retail multi-sites avec restitution à la direction.</p>
+              <div class="project-tags"><span>Clôtures</span><span>FP&amp;A</span><span>Reporting</span></div>
+            </article>
+            <article class="surface-card project-card">
+              <div class="project-index">03</div>
+              <h4 class="project-title">Outils Power BI pour la planification à 3 ans</h4>
+              <p>Conception d'outils de planification financière avec modélisation de scénarios, suivi des indicateurs et meilleure gouvernance des données.</p>
+              <div class="project-tags"><span>Power BI</span><span>Planification</span><span>Modélisation</span></div>
+            </article>
           </div>
-        </article>
-        <article class="surface-card timeline-card reveal">
-          <div class="timeline-meta">
-            <div class="brand-badge brand-teaching"><span>Cours de maths</span></div>
-            <div class="timeline-period">Jan. - Juin 2025</div>
-            <div class="timeline-place">Paris, France</div>
-            <div class="timeline-type">Freelance | 6 mois</div>
+        </div>
+        <div class="project-group reveal" id="projets-sjc">
+          <div class="project-group-header">
+            <div>
+              <h3 class="project-group-title">Sorbonne Junior Conseil</h3>
+              <div class="project-group-label">Secrétaire général | 2025 - 2026</div>
+            </div>
+            <div class="brand-badge brand-sjc"><span class="brand-long">SJC</span></div>
           </div>
-          <div>
-            <div class="timeline-company">Cours particuliers</div>
-            <h3 class="timeline-role">Professeur de mathematiques</h3>
-            <ul class="bullet-list">
-              <li>Accompagnement d'eleves de lycee et de classes preparatoires en mathematiques et analyse quantitative.</li>
-              <li>Conception de supports pedagogiques personnalises adaptes au niveau et aux objectifs de chaque eleve.</li>
-              <li>Renforcement d'une communication claire et de la capacite a rendre accessibles des concepts complexes.</li>
-            </ul>
+          <div class="project-grid">
+            <article class="surface-card project-card">
+              <div class="project-index">01</div>
+              <h4 class="project-title">Formalisation des procédures internes</h4>
+              <p>Cartographie et réécriture des procédures administratives pour garantir la continuité opérationnelle et la conformité CNJE.</p>
+              <div class="project-tags"><span>Procédures</span><span>Conformité</span><span>CNJE</span></div>
+            </article>
+            <article class="surface-card project-card">
+              <div class="project-index">02</div>
+              <h4 class="project-title">Préparation des audits et suivi des exigences CNJE</h4>
+              <p>Collecte des pièces justificatives, suivi des indicateurs qualité et accompagnement des équipes dans une logique d'amélioration continue.</p>
+              <div class="project-tags"><span>Audit</span><span>Contrôle interne</span><span>Qualité</span></div>
+            </article>
+            <article class="surface-card project-card">
+              <div class="project-index">03</div>
+              <h4 class="project-title">Gouvernance et organisation interne</h4>
+              <p>Structuration des instances de direction, documentation institutionnelle et coordination des équipes autour d'un cadre plus robuste.</p>
+              <div class="project-tags"><span>Gouvernance</span><span>Management</span><span>Organisation</span></div>
+            </article>
           </div>
-        </article>
-        <article class="surface-card timeline-card reveal">
-          <div class="timeline-meta">
+        </div>
+        <div class="project-group reveal" id="projets-asya">
+          <div class="project-group-header">
+            <div>
+              <h3 class="project-group-title">SAS ASYA</h3>
+              <div class="project-group-label">Assistant en gestion financière | 2021 - 2023</div>
+            </div>
             <div class="brand-badge brand-asya"><span>ASYA</span></div>
-            <div class="timeline-period">2021 - 2023</div>
-            <div class="timeline-place">Oise, France</div>
-            <div class="timeline-type">Assistant | 2 ans</div>
           </div>
-          <div>
-            <div class="timeline-company">SAS ASYA</div>
-            <h3 class="timeline-role">Assistant en gestion financiere</h3>
-            <ul class="bullet-list">
-              <li>Appui au pilotage financier grace a l'analyse mensuelle des resultats et au suivi des flux financiers.</li>
-              <li>Preparation de syntheses de gestion a destination de la direction.</li>
-            </ul>
-            <a class="btn btn-gold" href="#projets-asya">Voir les projets</a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-  <section class="section projects-section" id="projets">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-kicker">Realisations detaillees</div>
-        <h2>Detail des projets</h2>
-        <p class="projects-intro">Apercu de missions a fort impact conduites lors de mes experiences professionnelles, de la conception d'outils de reporting a l'analyse approfondie de donnees financieres.</p>
-      </div>
-      <div class="project-group reveal" id="projets-sfr">
-        <div class="project-group-header">
-          <div>
-            <h3 class="project-group-title">SFR</h3>
-            <div class="project-group-label">Alternant controleur de gestion financier | 2025 - 2026</div>
-          </div>
-          <div class="brand-badge brand-sfr"><span>SFR</span></div>
-        </div>
-        <div class="project-grid">
-          <article class="surface-card project-card">
-            <div class="project-index">01</div>
-            <h4 class="project-title">Pilotage de deux projets Power BI pour la Direction Financiere</h4>
-            <p>Conception et deploiement de deux tableaux de bord Power BI afin de fiabiliser le reporting, accelerer la production des analyses et rendre les indicateurs cles plus lisibles pour les equipes financieres.</p>
-            <div class="project-tags"><span>Power BI</span><span>Reporting</span><span>DAX</span><span>Data Viz</span></div>
-          </article>
-          <article class="surface-card project-card">
-            <div class="project-index">02</div>
-            <h4 class="project-title">Analyse financiere de 22 distributeurs a partir des liasses fiscales</h4>
-            <p>Analyse de la sante financiere, de la rentabilite, de la solvabilite et des equilibres bilanciels avec restitution claire et exploitable pour la Direction.</p>
-            <div class="project-tags"><span>Analyse financiere</span><span>Liasses fiscales</span><span>Rentabilite</span><span>Excel</span></div>
-          </article>
-          <article class="surface-card project-card">
-            <div class="project-index">03</div>
-            <h4 class="project-title">Clotures, budget, forecast et analyses d'ecarts</h4>
-            <p>Participation active aux cycles mensuels de cloture et a la construction budgetaire avec identification des causes de derive entre reel, budget et forecast.</p>
-            <div class="project-tags"><span>Clotures</span><span>Budget</span><span>Forecast</span><span>Ecarts</span></div>
-          </article>
-        </div>
-      </div>
-      <div class="project-group reveal" id="projets-weldom">
-        <div class="project-group-header">
-          <div>
-            <h3 class="project-group-title">Weldom</h3>
-            <div class="project-group-label">Analyste FP&amp;A | 2024 - 2025</div>
-          </div>
-          <div class="brand-badge brand-weldom"><span>Weldom</span></div>
-        </div>
-        <div class="project-grid">
-          <article class="surface-card project-card">
-            <div class="project-index">01</div>
-            <h4 class="project-title">Suivi de performance de 23 magasins et 200 M EUR de CA</h4>
-            <p>Pilotage de la performance de magasins retail via l'analyse de la marge brute, des stocks, de la masse salariale et des leviers d'optimisation.</p>
-            <div class="project-tags"><span>Performance</span><span>Retail</span><span>Marge</span><span>Stocks</span></div>
-          </article>
-          <article class="surface-card project-card">
-            <div class="project-index">02</div>
-            <h4 class="project-title">Clotures mensuelles et analyses budgetaires</h4>
-            <p>Prise en charge des clotures mensuelles et de la construction des previsions budgetaires dans un environnement retail multi-sites avec restitution a la direction.</p>
-            <div class="project-tags"><span>Clotures</span><span>FP&amp;A</span><span>Reporting</span></div>
-          </article>
-          <article class="surface-card project-card">
-            <div class="project-index">03</div>
-            <h4 class="project-title">Outils Power BI pour la planification a 3 ans</h4>
-            <p>Conception d'outils de planification financiere avec modelisation de scenarios, suivi des indicateurs et meilleure gouvernance des donnees.</p>
-            <div class="project-tags"><span>Power BI</span><span>Planification</span><span>Modelisation</span></div>
-          </article>
-        </div>
-      </div>
-      <div class="project-group reveal" id="projets-sjc">
-        <div class="project-group-header">
-          <div>
-            <h3 class="project-group-title">Sorbonne Junior Conseil</h3>
-            <div class="project-group-label">Secretaire general | 2025 - 2026</div>
-          </div>
-          <div class="brand-badge brand-sjc"><span class="brand-long">SJC</span></div>
-        </div>
-        <div class="project-grid">
-          <article class="surface-card project-card">
-            <div class="project-index">01</div>
-            <h4 class="project-title">Formalisation des procedures internes</h4>
-            <p>Cartographie et reecriture des procedures administratives pour garantir la continuite operationnelle et la conformite CNJE.</p>
-            <div class="project-tags"><span>Procedures</span><span>Conformite</span><span>CNJE</span></div>
-          </article>
-          <article class="surface-card project-card">
-            <div class="project-index">02</div>
-            <h4 class="project-title">Preparation des audits et suivi des exigences CNJE</h4>
-            <p>Collecte des pieces justificatives, suivi des indicateurs qualite et accompagnement des equipes dans une logique d'amelioration continue.</p>
-            <div class="project-tags"><span>Audit</span><span>Controle interne</span><span>Qualite</span></div>
-          </article>
-          <article class="surface-card project-card">
-            <div class="project-index">03</div>
-            <h4 class="project-title">Gouvernance et organisation interne</h4>
-            <p>Structuration des instances de direction, documentation institutionnelle et coordination des equipes autour d'un cadre plus robuste.</p>
-            <div class="project-tags"><span>Gouvernance</span><span>Management</span><span>Organisation</span></div>
-          </article>
-        </div>
-      </div>
-      <div class="project-group reveal" id="projets-asya">
-        <div class="project-group-header">
-          <div>
-            <h3 class="project-group-title">SAS ASYA</h3>
-            <div class="project-group-label">Assistant en gestion financiere | 2021 - 2023</div>
-          </div>
-          <div class="brand-badge brand-asya"><span>ASYA</span></div>
-        </div>
-        <div class="project-grid">
-          <article class="surface-card project-card">
-            <div class="project-index">01</div>
-            <h4 class="project-title">Analyse mensuelle des resultats</h4>
-            <p>Participation a l'analyse mensuelle du compte de resultat avec identification des tendances et preparation des commentaires de gestion pour la direction.</p>
-            <div class="project-tags"><span>Analyse financiere</span><span>Resultats</span></div>
-          </article>
-          <article class="surface-card project-card">
-            <div class="project-index">02</div>
-            <h4 class="project-title">Suivi des flux financiers et syntheses de gestion</h4>
-            <p>Suivi des flux financiers et production de syntheses aide a la decision pour soutenir les arbitrages strategiques et operationnels.</p>
-            <div class="project-tags"><span>Flux financiers</span><span>Tresorerie</span><span>Reporting</span></div>
-          </article>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="section" id="formation">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-kicker">Parcours academique</div>
-        <h2>Formation</h2>
-      </div>
-      <div class="education-list">
-        <article class="education-item reveal">
-          <div class="education-year">2025 - 2027</div>
-          <div>
-            <div class="education-school">Universite Paris 1 Pantheon-Sorbonne | IAE Paris</div>
-            <h3 class="education-degree">Master Controle de Gestion et Audit Organisationnel</h3>
-            <p class="education-detail">Specialisation en controle de gestion, audit, pilotage budgetaire, reporting et aide a la decision.</p>
-            <div class="education-note">Formation en alternance</div>
-          </div>
-        </article>
-        <article class="education-item reveal">
-          <div class="education-year">2021 - 2025</div>
-          <div>
-            <div class="education-school">ESSEC Business School | Cergy</div>
-            <h3 class="education-degree">Global Bachelor of Business Administration (GBBA)</h3>
-            <p class="education-detail">Parcours oriente finance d'entreprise, controle de gestion, strategie et analyse de la performance.</p>
-          </div>
-        </article>
-        <article class="education-item reveal">
-          <div class="education-year">2024</div>
-          <div>
-            <div class="education-school">KU Leuven | Faculty of Economics and Business | Bruxelles</div>
-            <h3 class="education-degree">Programme d'echange academique international</h3>
-            <p class="education-detail">Cours suivis en finance, economie et environnement international dans un contexte academique multilingue et multiculturel.</p>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-  <section class="section about-section" id="competences">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-kicker">Savoir-faire</div>
-        <h2>Competences</h2>
-      </div>
-      <div class="skills-grid">
-        <article class="surface-card skill-card reveal">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.6" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
-          <div class="skill-label">Analyse & Pilotage financier</div>
-          <div class="skill-list">
-            <div class="skill-row">
-              <div class="skill-head"><span>Analyse financiere</span><span>Expert</span></div>
-              <div class="meter"><span style="--fill:0.95"></span></div>
-            </div>
-            <div class="skill-row">
-              <div class="skill-head"><span>Controle de gestion</span><span>Expert</span></div>
-              <div class="meter"><span style="--fill:0.92"></span></div>
-            </div>
-            <div class="skill-row">
-              <div class="skill-head"><span>Budget & Forecast</span><span>Avance</span></div>
-              <div class="meter"><span style="--fill:0.90"></span></div>
-            </div>
-            <div class="skill-row">
-              <div class="skill-head"><span>Clotures mensuelles</span><span>Avance</span></div>
-              <div class="meter"><span style="--fill:0.88"></span></div>
-            </div>
-            <div class="skill-row">
-              <div class="skill-head"><span>Reporting financier</span><span>Expert</span></div>
-              <div class="meter"><span style="--fill:0.93"></span></div>
-            </div>
-          </div>
-        </article>
-        <article class="surface-card skill-card reveal">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18M9 21V9"></path></svg>
-          <div class="skill-label">Outils & Technologie</div>
-          <div class="skill-list">
-            <div class="skill-row">
-              <div class="skill-head"><span>Excel</span><span>Expert</span></div>
-              <div class="meter"><span style="--fill:0.97"></span></div>
-            </div>
-            <div class="skill-row">
-              <div class="skill-head"><span>Power BI</span><span>Avance</span></div>
-              <div class="meter"><span style="--fill:0.88"></span></div>
-            </div>
-            <div class="skill-row">
-              <div class="skill-head"><span>Google Sheets</span><span>Expert</span></div>
-              <div class="meter"><span style="--fill:0.92"></span></div>
-            </div>
-            <div class="skill-row">
-              <div class="skill-head"><span>SAP / Oracle ERP</span><span>Avance</span></div>
-              <div class="meter"><span style="--fill:0.80"></span></div>
-            </div>
-            <div class="skill-row">
-              <div class="skill-head"><span>Python</span><span>Intermediaire</span></div>
-              <div class="meter"><span style="--fill:0.65"></span></div>
-            </div>
-          </div>
-        </article>
-        <article class="surface-card skill-card reveal">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-          <div class="skill-label">Competences transverses</div>
-          <div class="tag-list">
-            <span class="tag">Audit interne</span>
-            <span class="tag">Gouvernance</span>
-            <span class="tag">Liasses fiscales</span>
-            <span class="tag">FP&amp;A</span>
-            <span class="tag">Data analysis</span>
-            <span class="tag">Synthese dirigeante</span>
-            <span class="tag">Pilotage de projet</span>
-            <span class="tag">IA generative</span>
-            <span class="tag">Pedagogie</span>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-  <section class="section" id="certifications">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-kicker">Accreditations & Langues</div>
-        <h2>Certifications & Langues</h2>
-      </div>
-      <div class="cert-grid">
-        <div>
-          <div class="mini-title">Certifications professionnelles</div>
-          <div class="cert-list">
-            <article class="cert-item reveal">
-              <div class="cert-dot"></div>
-              <div>
-                <div class="cert-name">Bloomberg Market Concepts (BMC)</div>
-                <div class="cert-sub">Bloomberg LP</div>
-                <a class="cert-link" href="https://portal.bloombergforeducation.com/certificates/Gqm31zEgE8g1HY3KfarXbXHK" target="_blank" rel="noreferrer">Voir le certificat</a>
-              </div>
+          <div class="project-grid">
+            <article class="surface-card project-card">
+              <div class="project-index">01</div>
+              <h4 class="project-title">Analyse mensuelle des résultats</h4>
+              <p>Participation à l'analyse mensuelle du compte de résultat avec identification des tendances et préparation des commentaires de gestion pour la direction.</p>
+              <div class="project-tags"><span>Analyse financière</span><span>Résultats</span></div>
             </article>
-            <article class="cert-item reveal">
-              <div class="cert-dot"></div>
-              <div>
-                <div class="cert-name">Bloomberg ESG</div>
-                <div class="cert-sub">Bloomberg LP</div>
-                <a class="cert-link" href="https://portal.bloombergforeducation.com/certificates/download?course_category_id=7" target="_blank" rel="noreferrer">Voir le certificat</a>
-              </div>
-            </article>
-            <article class="cert-item reveal">
-              <div class="cert-dot"></div>
-              <div>
-                <div class="cert-name">Investment Banking Job Simulation</div>
-                <div class="cert-sub">JPMorgan Chase</div>
-                <a class="cert-link" href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/JPMorgan%20Chase/YD2kY95RQxQtXxFTS_JPMorgan%20Chase_xeuEAt7sZC6ttxgPQ_1714410345412_completion_certificate.pdf" target="_blank" rel="noreferrer">Voir le certificat</a>
-              </div>
-            </article>
-            <article class="cert-item reveal">
-              <div class="cert-dot"></div>
-              <div>
-                <div class="cert-name">Candidat CFA Niveau 1</div>
-                <div class="cert-sub">CFA Institute</div>
-              </div>
-            </article>
-            <article class="cert-item reveal">
-              <div class="cert-dot"></div>
-              <div>
-                <div class="cert-name">Excel - Certification avancee</div>
-                <div class="cert-sub">Harvard Business School Online</div>
-              </div>
-            </article>
-            <article class="cert-item reveal">
-              <div class="cert-dot"></div>
-              <div>
-                <div class="cert-name">Python - Data Science</div>
-                <div class="cert-sub">DataCamp</div>
-                <a class="cert-link" href="https://www.datacamp.com/completed/statement-of-accomplishment/course/c60d15b9a81c14cbaf1a5dc5257bc949527d9340" target="_blank" rel="noreferrer">Voir le certificat</a>
-              </div>
+            <article class="surface-card project-card">
+              <div class="project-index">02</div>
+              <h4 class="project-title">Suivi des flux financiers et synthèses de gestion</h4>
+              <p>Suivi des flux financiers et production de synthèses d'aide à la décision pour soutenir les arbitrages stratégiques et opérationnels.</p>
+              <div class="project-tags"><span>Flux financiers</span><span>Trésorerie</span><span>Reporting</span></div>
             </article>
           </div>
         </div>
-        <div>
-          <div class="mini-title">Langues pratiquees</div>
-          <div class="language-list">
-            <div class="language-row reveal">
-              <div class="language-head"><span class="language-name">Francais</span><span class="language-level">Langue maternelle</span></div>
-              <div class="meter"><span style="--fill:1"></span></div>
+      </div>
+    </section>
+    <section class="section" id="formation">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-kicker">Parcours académique</div>
+          <h2>Formation</h2>
+        </div>
+        <div class="education-list">
+          <article class="education-item reveal">
+            <div class="education-year">2025 - 2027</div>
+            <div>
+              <div class="education-school">Université Paris 1 Panthéon-Sorbonne | IAE Paris</div>
+              <h3 class="education-degree">Master Contrôle de Gestion et Audit Organisationnel</h3>
+              <p class="education-detail">Spécialisation en contrôle de gestion, audit, pilotage budgétaire, reporting et aide à la décision.</p>
+              <div class="education-note">Formation en alternance</div>
             </div>
-            <div class="language-row reveal">
-              <div class="language-head"><span class="language-name">Anglais</span><span class="language-level">Courant | C1</span></div>
-              <div class="meter"><span style="--fill:0.87"></span></div>
+          </article>
+          <article class="education-item reveal">
+            <div class="education-year">2021 - 2025</div>
+            <div>
+              <div class="education-school">ESSEC Business School | Cergy</div>
+              <h3 class="education-degree">Global Bachelor of Business Administration (GBBA)</h3>
+              <p class="education-detail">Parcours orienté finance d'entreprise, contrôle de gestion, stratégie et analyse de la performance.</p>
             </div>
-            <div class="language-row reveal">
-              <div class="language-head"><span class="language-name">Kurde / Turc</span><span class="language-level">Langue maternelle</span></div>
-              <div class="meter"><span style="--fill:1"></span></div>
+          </article>
+          <article class="education-item reveal">
+            <div class="education-year">2024</div>
+            <div>
+              <div class="education-school">KU Leuven | Faculty of Economics and Business | Bruxelles</div>
+              <h3 class="education-degree">Programme d'échange académique international</h3>
+              <p class="education-detail">Cours suivis en finance, économie et environnement international dans un contexte académique multilingue et multiculturel.</p>
             </div>
-            <div class="language-row reveal">
-              <div class="language-head"><span class="language-name">Allemand</span><span class="language-level">Intermediaire | B1</span></div>
-              <div class="meter"><span style="--fill:0.55"></span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section class="section about-section" id="competences">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-kicker">Savoir-faire</div>
+          <h2>Compétences</h2>
+        </div>
+        <div class="skills-grid">
+          <article class="surface-card skill-card reveal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+            <div class="skill-label">Analyse & pilotage financier</div>
+            <div class="skill-list">
+              <div class="skill-row">
+                <div class="skill-head"><span>Analyse financière</span><span>Expert</span></div>
+                <div class="meter"><span style="--fill:0.95"></span></div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-head"><span>Contrôle de gestion</span><span>Expert</span></div>
+                <div class="meter"><span style="--fill:0.92"></span></div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-head"><span>Budget & Forecast</span><span>Avancé</span></div>
+                <div class="meter"><span style="--fill:0.90"></span></div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-head"><span>Clôtures mensuelles</span><span>Avancé</span></div>
+                <div class="meter"><span style="--fill:0.88"></span></div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-head"><span>Reporting financier</span><span>Expert</span></div>
+                <div class="meter"><span style="--fill:0.93"></span></div>
+              </div>
             </div>
-          </div>
-          <div style="margin-top: 2rem;">
-            <div class="mini-title">Centres d'interet</div>
+          </article>
+          <article class="surface-card skill-card reveal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18M9 21V9"></path></svg>
+            <div class="skill-label">Outils & technologie</div>
+            <div class="skill-list">
+              <div class="skill-row">
+                <div class="skill-head"><span>Excel</span><span>Expert</span></div>
+                <div class="meter"><span style="--fill:0.97"></span></div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-head"><span>Power BI</span><span>Avancé</span></div>
+                <div class="meter"><span style="--fill:0.88"></span></div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-head"><span>Google Sheets</span><span>Expert</span></div>
+                <div class="meter"><span style="--fill:0.92"></span></div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-head"><span>SAP / Oracle ERP</span><span>Avancé</span></div>
+                <div class="meter"><span style="--fill:0.80"></span></div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-head"><span>Python</span><span>Intermédiaire</span></div>
+                <div class="meter"><span style="--fill:0.65"></span></div>
+              </div>
+            </div>
+          </article>
+          <article class="surface-card skill-card reveal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10A15.3 15.3 0 0 1 12 2z"></path></svg>
+            <div class="skill-label">Compétences transverses</div>
             <div class="tag-list">
-              <span class="tag">Football | 14 ans en club</span>
-              <span class="tag">Course a pied</span>
-              <span class="tag">Finance & marches</span>
-              <span class="tag">Strategie</span>
-              <span class="tag">Performance</span>
+              <span class="tag">Audit interne</span>
+              <span class="tag">Gouvernance</span>
+              <span class="tag">Liasses fiscales</span>
+              <span class="tag">FP&amp;A</span>
+              <span class="tag">Data analysis</span>
+              <span class="tag">Synthèse dirigeante</span>
+              <span class="tag">Pilotage de projet</span>
+              <span class="tag">IA générative</span>
+              <span class="tag">Pédagogie</span>
             </div>
-            <p class="interest-copy">14 ans de pratique du football en club au niveau regional, avec participation a des tournois internationaux en Pologne et en Angleterre.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="certifications">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-kicker">Accréditations & langues</div>
+          <h2>Certifications & Langues</h2>
+        </div>
+        <div class="cert-grid">
+          <div>
+            <div class="mini-title">Certifications professionnelles</div>
+            <div class="cert-list">
+              <article class="cert-item reveal">
+                <div class="cert-dot"></div>
+                <div>
+                  <div class="cert-name">Bloomberg Market Concepts (BMC)</div>
+                  <div class="cert-sub">Bloomberg LP</div>
+                  <a class="cert-link" href="https://portal.bloombergforeducation.com/certificates/Gqm31zEgE8g1HY3KfarXbXHK" target="_blank" rel="noreferrer">Voir le certificat</a>
+                </div>
+              </article>
+              <article class="cert-item reveal">
+                <div class="cert-dot"></div>
+                <div>
+                  <div class="cert-name">Bloomberg ESG</div>
+                  <div class="cert-sub">Bloomberg LP</div>
+                  <a class="cert-link" href="https://portal.bloombergforeducation.com/certificates/download?course_category_id=7" target="_blank" rel="noreferrer">Voir le certificat</a>
+                </div>
+              </article>
+              <article class="cert-item reveal">
+                <div class="cert-dot"></div>
+                <div>
+                  <div class="cert-name">Investment Banking Job Simulation</div>
+                  <div class="cert-sub">JPMorgan Chase</div>
+                  <a class="cert-link" href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/JPMorgan%20Chase/YD2kY95RQxQtXxFTS_JPMorgan%20Chase_xeuEAt7sZC6ttxgPQ_1714410345412_completion_certificate.pdf" target="_blank" rel="noreferrer">Voir le certificat</a>
+                </div>
+              </article>
+              <article class="cert-item reveal">
+                <div class="cert-dot"></div>
+                <div>
+                  <div class="cert-name">Candidat CFA Niveau 1</div>
+                  <div class="cert-sub">CFA Institute</div>
+                </div>
+              </article>
+              <article class="cert-item reveal">
+                <div class="cert-dot"></div>
+                <div>
+                  <div class="cert-name">Excel - Certification avancée</div>
+                  <div class="cert-sub">Harvard Business School Online</div>
+                </div>
+              </article>
+              <article class="cert-item reveal">
+                <div class="cert-dot"></div>
+                <div>
+                  <div class="cert-name">Python - Data Science</div>
+                  <div class="cert-sub">DataCamp</div>
+                  <a class="cert-link" href="https://www.datacamp.com/completed/statement-of-accomplishment/course/c60d15b9a81c14cbaf1a5dc5257bc949527d9340" target="_blank" rel="noreferrer">Voir le certificat</a>
+                </div>
+              </article>
+            </div>
+          </div>
+          <div>
+            <div class="mini-title">Langues pratiquées</div>
+            <div class="language-list">
+              <div class="language-row reveal">
+                <div class="language-head"><span class="language-name">Français</span><span class="language-level">Langue maternelle</span></div>
+                <div class="meter"><span style="--fill:1"></span></div>
+              </div>
+              <div class="language-row reveal">
+                <div class="language-head"><span class="language-name">Anglais</span><span class="language-level">Courant | C1</span></div>
+                <div class="meter"><span style="--fill:0.87"></span></div>
+              </div>
+              <div class="language-row reveal">
+                <div class="language-head"><span class="language-name">Kurde / Turc</span><span class="language-level">Langue maternelle</span></div>
+                <div class="meter"><span style="--fill:1"></span></div>
+              </div>
+              <div class="language-row reveal">
+                <div class="language-head"><span class="language-name">Allemand</span><span class="language-level">Intermédiaire | B1</span></div>
+                <div class="meter"><span style="--fill:0.55"></span></div>
+              </div>
+            </div>
+            <div style="margin-top: 2rem;">
+              <div class="mini-title">Centres d'intérêt</div>
+              <div class="tag-list">
+                <span class="tag">Football | 14 ans en club</span>
+                <span class="tag">Course à pied</span>
+                <span class="tag">Finance & marchés</span>
+                <span class="tag">Stratégie</span>
+                <span class="tag">Performance</span>
+              </div>
+              <p class="interest-copy">14 ans de pratique du football en club au niveau régional, avec participation à des tournois internationaux en Pologne et en Angleterre.</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-  <section class="section contact-section" id="contact">
-    <div class="container contact-card">
-      <div class="section-kicker">Disponible des septembre 2026</div>
-      <h2>Discutons de votre prochaine alternance</h2>
-      <p class="contact-copy">Je recherche une alternance de 12 mois en analyse financiere, controle de gestion ou FP&amp;A. N'hesitez pas a me contacter si mon profil peut correspondre a vos besoins.</p>
-      <div class="btn-row contact-actions">
-        <a class="btn btn-light-solid" href="mailto:tajdinacar@icloud.com">tajdinacar@icloud.com</a>
-        <a class="btn btn-light" href="https://www.linkedin.com/in/tajdin-acar-600872226" target="_blank" rel="noreferrer">LinkedIn</a>
+    </section>
+    <section class="section contact-section" id="contact">
+      <div class="container contact-card">
+        <div class="section-kicker">Disponible dès septembre 2026</div>
+        <h2>Discutons de votre prochaine alternance</h2>
+        <p class="contact-copy">Je recherche une alternance de 12 mois en analyse financière, contrôle de gestion ou FP&amp;A. N'hésitez pas à me contacter si mon profil peut correspondre à vos besoins.</p>
+        <div class="btn-row contact-actions">
+          <a class="btn btn-light-solid" href="mailto:tajdinacar@icloud.com">tajdinacar@icloud.com</a>
+          <a class="btn btn-light" href="https://www.linkedin.com/in/tajdin-acar-600872226" target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
+        <div class="contact-links">
+          <a href="tel:+33782992164">+33 7 82 99 21 64</a>
+          <span>Paris, France</span>
+        </div>
       </div>
-      <div class="contact-links">
-        <a href="tel:+33782992164">+33 7 82 99 21 64</a>
-        <span>Paris, France</span>
-      </div>
-    </div>
-  </section>
-</main>
-<footer>
-  <p>&copy; 2026 Tajdin Acar | Portfolio concu pour <span>GitHub Pages</span></p>
-</footer>
-<button class="back-top" id="back-top" type="button" aria-label="Retour en haut">
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg>
-</button>
-<script>
-  const root = document.documentElement;
-  const themeToggle = document.getElementById("theme-toggle");
-  const savedTheme = localStorage.getItem("theme");
-  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  const activeTheme = savedTheme || (prefersDark ? "dark" : "light");
-  function applyTheme(theme) {
-    if (theme === "dark") {
-      root.setAttribute("data-theme", "dark");
-      themeToggle.textContent = "☀️";
-      themeToggle.setAttribute("aria-pressed", "true");
-    } else {
-      root.removeAttribute("data-theme");
-      themeToggle.textContent = "🌙";
-      themeToggle.setAttribute("aria-pressed", "false");
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2026 Tajdin Acar | Portfolio conçu pour <span>GitHub Pages</span></p>
+  </footer>
+  <button class="back-top" id="back-top" type="button" aria-label="Retour en haut">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
+  <script>
+    const root = document.documentElement;
+    const themeToggle = document.getElementById("theme-toggle");
+    const menuToggle = document.getElementById("menu-toggle");
+    const mobilePanel = document.getElementById("mobile-panel");
+    const navCta = document.getElementById("nav-cta");
+    const backTop = document.getElementById("back-top");
+    function getStoredTheme() {
+      try {
+        return localStorage.getItem("theme");
+      } catch (error) {
+        return null;
+      }
     }
-  }
-  applyTheme(activeTheme);
-  themeToggle.addEventListener("click", () => {
-    const nextTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
-    applyTheme(nextTheme);
-    localStorage.setItem("theme", nextTheme);
-  });
-  const menuToggle = document.getElementById("menu-toggle");
-  const mobilePanel = document.getElementById("mobile-panel");
-  const mobileLinks = mobilePanel.querySelectorAll("a");
-  function closeMenu() {
-    mobilePanel.classList.remove("is-open");
-    menuToggle.setAttribute("aria-expanded", "false");
-  }
-  menuToggle.addEventListener("click", () => {
-    const isOpen = mobilePanel.classList.toggle("is-open");
-    menuToggle.setAttribute("aria-expanded", String(isOpen));
-  });
-  mobileLinks.forEach((link) => link.addEventListener("click", closeMenu));
-  const navCta = document.getElementById("nav-cta");
-  const backTop = document.getElementById("back-top");
-  function updateScrollUi() {
-    const scrolled = window.scrollY > 280;
-    navCta.classList.toggle("is-visible", scrolled);
-    backTop.classList.toggle("is-visible", window.scrollY > 420);
-  }
-  window.addEventListener("scroll", updateScrollUi, { passive: true });
-  updateScrollUi();
-  backTop.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-  const profilePhoto = document.getElementById("profile-photo");
-  if (profilePhoto) {
-    const actualPhoto = profilePhoto.dataset.photoSrc;
-    const tester = new Image();
-    tester.onload = () => {
-      profilePhoto.src = actualPhoto;
-      profilePhoto.classList.remove("is-placeholder");
-    };
-    tester.onerror = () => {
-      profilePhoto.classList.add("is-placeholder");
-    };
-    tester.src = actualPhoto;
-  }
-  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const revealItems = document.querySelectorAll(".reveal");
-  const meters = document.querySelectorAll(".meter > span");
-  if (!reducedMotion && "IntersectionObserver" in window) {
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add("is-visible");
-        entry.target.querySelectorAll(".meter > span").forEach((bar) => {
-          bar.classList.add("animate");
-        });
-        observer.unobserve(entry.target);
-      });
-    }, { threshold: 0.14, rootMargin: "0px 0px -40px 0px" });
-    revealItems.forEach((item) => revealObserver.observe(item));
-    const meterObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.querySelectorAll(".meter > span").forEach((bar) => bar.classList.add("animate"));
-        observer.unobserve(entry.target);
-      });
-    }, { threshold: 0.2 });
-    document.querySelectorAll("#competences, #certifications").forEach((section) => meterObserver.observe(section));
-  } else {
-    revealItems.forEach((item) => item.classList.add("is-visible"));
-    meters.forEach((bar) => bar.classList.add("animate"));
-  }
-  const counters = document.querySelectorAll(".counter");
-  if (!reducedMotion && "IntersectionObserver" in window) {
-    const counterObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        const el = entry.target;
-        const target = Number(el.dataset.target || 0);
-        const start = performance.now();
-        const duration = 1200;
-        const tick = (now) => {
-          const progress = Math.min((now - start) / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 3);
-          el.textContent = String(Math.floor(target * eased));
-          if (progress < 1) {
-            requestAnimationFrame(tick);
-          } else {
-            el.textContent = String(target);
-          }
-        };
-        requestAnimationFrame(tick);
-        observer.unobserve(el);
-      });
-    }, { threshold: 0.5 });
-    counters.forEach((counter) => counterObserver.observe(counter));
-  } else {
-    counters.forEach((counter) => {
-      counter.textContent = counter.dataset.target || "0";
+    function storeTheme(theme) {
+      try {
+        localStorage.setItem("theme", theme);
+      } catch (error) {
+        return null;
+      }
+      return theme;
+    }
+    function applyTheme(theme) {
+      if (theme === "dark") {
+        root.setAttribute("data-theme", "dark");
+        themeToggle.setAttribute("aria-pressed", "true");
+      } else {
+        root.removeAttribute("data-theme");
+        themeToggle.setAttribute("aria-pressed", "false");
+      }
+    }
+    const savedTheme = getStoredTheme();
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    applyTheme(savedTheme || (prefersDark ? "dark" : "light"));
+    themeToggle.addEventListener("click", () => {
+      const nextTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      applyTheme(nextTheme);
+      storeTheme(nextTheme);
     });
-  }
-</script>
+    function closeMenu() {
+      mobilePanel.classList.remove("is-open");
+      menuToggle.setAttribute("aria-expanded", "false");
+    }
+    menuToggle.addEventListener("click", () => {
+      const isOpen = mobilePanel.classList.toggle("is-open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+    mobilePanel.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+    function updateScrollUi() {
+      const scrolled = window.scrollY > 280;
+      navCta.classList.toggle("is-visible", scrolled);
+      backTop.classList.toggle("is-visible", window.scrollY > 420);
+    }
+    window.addEventListener("scroll", updateScrollUi, { passive: true });
+    updateScrollUi();
+    backTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const revealItems = document.querySelectorAll(".reveal");
+    const meters = document.querySelectorAll(".meter > span");
+    const bars = document.querySelectorAll(".bar");
+    if (!reducedMotion && "IntersectionObserver" in window) {
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          entry.target.querySelectorAll(".meter > span").forEach((bar) => bar.classList.add("animate"));
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.14, rootMargin: "0px 0px -40px 0px" });
+      revealItems.forEach((item) => revealObserver.observe(item));
+      const motionObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.querySelectorAll(".meter > span, .bar").forEach((el) => el.classList.add("animate"));
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.2 });
+      document.querySelectorAll("#competences, #certifications, .executive-panel").forEach((section) => motionObserver.observe(section));
+    } else {
+      revealItems.forEach((item) => item.classList.add("is-visible"));
+      meters.forEach((meter) => meter.classList.add("animate"));
+      bars.forEach((bar) => bar.classList.add("animate"));
+    }
+    const counters = document.querySelectorAll(".counter");
+    if (!reducedMotion && "IntersectionObserver" in window) {
+      const counterObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target;
+          const target = Number(el.dataset.target || 0);
+          const start = performance.now();
+          const duration = 1200;
+          function tick(now) {
+            const progress = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            el.textContent = String(Math.floor(target * eased));
+            if (progress < 1) {
+              requestAnimationFrame(tick);
+            } else {
+              el.textContent = String(target);
+            }
+          }
+          requestAnimationFrame(tick);
+          observer.unobserve(el);
+        });
+      }, { threshold: 0.5 });
+      counters.forEach((counter) => counterObserver.observe(counter));
+    } else {
+      counters.forEach((counter) => {
+        counter.textContent = counter.dataset.target || "0";
+      });
+    }
+    const sections = document.querySelectorAll("main section[id]");
+    const navLinks = document.querySelectorAll(".nav-links a");
+    if ("IntersectionObserver" in window) {
+      const activeObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const active = entry.target.getAttribute("id");
+          navLinks.forEach((link) => {
+            link.classList.toggle("is-active", link.getAttribute("href") === "#" + active);
+          });
+        });
+      }, { rootMargin: "-40% 0px -55% 0px" });
+      sections.forEach((section) => activeObserver.observe(section));
+    }
+  </script>
 </body>
 </html>
